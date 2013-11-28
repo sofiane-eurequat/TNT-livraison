@@ -1,0 +1,1523 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UltimateProxyCF</name>
+    </assembly>
+    <members>
+        <member name="T:ComponentPro.Licensing.Proxy.UltimateLicenseExceptionStatus">
+            <summary>
+            License check status.
+            </summary>
+            <exclude/>
+            <excludetoc/>
+        </member>
+        <member name="F:ComponentPro.Licensing.Proxy.UltimateLicenseExceptionStatus.UnableToValidate">
+            <summary>
+            UltimateLicenseManager was unable to validate the license.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Licensing.Proxy.UltimateLicenseExceptionStatus.KeyNotSigned">
+            <summary>
+            The key is not signed.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Licensing.Proxy.UltimateLicenseExceptionStatus.InvalidKey">
+            <summary>
+            Invalid license key.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Licensing.Proxy.UltimateLicenseExceptionStatus.UnableToRead">
+            <summary>
+            Unable to read license data.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Licensing.Proxy.UltimateLicenseExceptionStatus.InvalidDate">
+            <summary>
+            Expiry date is invalid.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Licensing.Proxy.UltimateLicenseExceptionStatus.LicenseExpired">
+            <summary>
+            License is expired.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Licensing.Proxy.UltimateLicenseException">
+            <summary>Represents the License Exception.</summary>
+            <exclude/>
+            <excludetoc/>
+        </member>
+        <member name="M:ComponentPro.Licensing.Proxy.UltimateLicenseException.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:ComponentPro.Licensing.Proxy.UltimateLicenseException"></see> class. </summary>
+        </member>
+        <member name="M:ComponentPro.Licensing.Proxy.UltimateLicenseException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:ComponentPro.Licensing.Proxy.UltimateLicenseException"></see> class with the specified error message.</summary>
+            <param _name="message">A <see cref="T:System.String"></see> that describes the error that occurred.</param>
+        </member>
+        <member name="M:ComponentPro.Licensing.Proxy.UltimateLicenseException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:ComponentPro.Licensing.Proxy.UltimateLicenseException"></see> class with the specified error message and inner exception.</summary>
+            <param _name="message">A <see cref="T:System.String"></see> that describes the error that occurred.</param>
+            <param _name="innerException">The exception that is the cause of the current exception. </param>
+        </member>
+        <member name="P:ComponentPro.Licensing.Proxy.UltimateLicenseException.Status">
+            <summary>Gets the error code.</summary>
+            <returns>An <see cref="T:ComponentPro.Licensing.Proxy.UltimateLicenseExceptionStatus"></see> value that indicates the error that occurred.</returns>
+        </member>
+        <member name="T:ComponentPro.Licensing.Proxy.UltimateLicenseManager">
+            <summary>
+            ComponentPro License Manager.
+            </summary>
+            <exclude/>
+            <excludetoc/>
+        </member>
+        <member name="T:ComponentPro.Net.Sspi.SspiAuthenticationMethod">
+            <summary>
+            Defines SSPI authentication methods used for logging in the user account on the server.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.Sspi.SspiAuthenticationMethod.Ntlm">
+            <summary>
+            Secure SASL NTLM authentication (also known as Secure Password Authentication - SPA). 
+            In Windows domain environment such as Active Directory, can also be used to authenticate the current Windows user 
+            (in this case, the developer should pass a null reference (Nothing in Visual Basic) as user name and password values). 
+            Might not be supported by particular server implementations.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.Sspi.SspiAuthenticationMethod.Kerberos">
+            <summary>
+            Secure SASL GSSAPI authentication (Kerberos). 
+            Used to authenticate the current Windows user in Windows domain environment such as Active Directory. 
+            User name and password values will be ignored and can be left blank or a null reference (Nothing in Visual Basic). 
+            Might not be supported by particular server implementations.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.Sspi.SspiAuthenticationMethod.Negotiate">
+            <summary>
+            Negotiate authentication.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Net.Sspi.SspiException">
+            <summary>
+            Represents an SSPI error.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Net.CommandResponseEventHandler">
+            <summary>
+            Represents the method that will handle the <b>CommandResponse</b> event.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">A <see cref="T:ComponentPro.Net.CommandResponseEventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="T:ComponentPro.Net.CommandResponseEventArgs">
+            <summary>
+            Provides data for the <b>CommandResponse</b> event.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Net.CommandResponseEventArgs.Command">
+            <summary>
+            Gets the command string, or a null reference when a response has been received.
+            </summary>
+            <value>The command string.</value>
+        </member>
+        <member name="P:ComponentPro.Net.CommandResponseEventArgs.Response">
+            <summary>
+            Gets the server's response, or a null reference when a command has been sent.
+            </summary>
+            <value>The server's response.</value>
+        </member>
+        <member name="T:ComponentPro.Net.ProxyClient">
+            <summary>Provides client connections for TCP network services through HTTP, SOCKS v4, SOCKS v4A and SOCKS v5 proxy servers.</summary>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.OnConnectCompleted(System.IAsyncResult)">
+            <summary>
+            Raises the ConnectCompleted event.
+            </summary>
+            <param name="asyncResult">The <see cref="T:System.IAsyncResult"/> object.</param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes a new instance of ProxyClient class with a container.
+            </summary>
+            <param name="container">The container object.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if the container is null.</exception>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:ComponentPro.Net.ProxyClient"></see> class.</summary>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.#ctor(System.Net.Sockets.AddressFamily)">
+            <summary>Initializes a new instance of the <see cref="T:ComponentPro.Net.ProxyClient"></see> class with the specified family.</summary>
+            <param name="family">The <see cref="P:System.Net.IPAddress.AddressFamily"></see> of the IP protocol. </param>
+            <exception cref="T:System.ArgumentException">family != AddressFamily.InterNetwork -or- family != AddressFamily.InterNetworkV6 </exception>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.#ctor(ComponentPro.Net.ProxyType,ComponentPro.Net.ProxyHttpConnectAuthMethod,System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:ComponentPro.Net.ProxyClient"></see> class with the specified family.</summary>
+            <exception cref="T:System.ArgumentException">family != AddressFamily.InterNetwork -or- family != AddressFamily.InterNetworkV6 </exception>
+            <param name="proxyType">The proxy type.</param>
+            <param name="authenticationMethod">The authentication method.</param>
+            <param name="proxyHost">The proxy host.</param>
+            <param name="proxyPort">The proxy port.</param>
+            <param name="userName">The proxy user name.</param>
+            <param name="password">The proxy password.</param>
+            <param name="domain">The proxy domain name.</param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.#ctor(System.Net.Sockets.AddressFamily,ComponentPro.Net.ProxyType,ComponentPro.Net.ProxyHttpConnectAuthMethod,System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:ComponentPro.Net.ProxyClient"></see> class with the specified family.</summary>
+            <param name="family">The <see cref="P:System.Net.IPAddress.AddressFamily"></see> of the IP protocol. </param>
+            <param name="authenticationMethod">The authentication method.</param>
+            <param name="domain">The proxy domain name.</param>
+            <param name="password">The proxy password.</param>
+            <param name="proxyHost">The proxy host.</param>
+            <param name="proxyPort">The proxy port.</param>
+            <param name="proxyType">The proxy type.</param>
+            <param name="userName">The proxy user name.</param>
+            <exception cref="T:System.ArgumentException">family != AddressFamily.InterNetwork -or- family != AddressFamily.InterNetworkV6 </exception>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.#ctor(System.String,System.Int32,ComponentPro.Net.ProxyType,ComponentPro.Net.ProxyHttpConnectAuthMethod,System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:ComponentPro.Net.ProxyClient"></see> class and connects to the specified port on the specified host.</summary>
+            <param name="port">The port number of the remote host to which you intend to connect. </param>
+            <param name="hostname">The DNS name of the remote host to which you intend to connect. </param>
+            <param name="proxyType">The <see cref="P:ComponentPro.Net.ProxyClient.ProxyType">type</see> of the proxy.</param>
+            <param name="authenticationMethod">The authentication method.</param>
+            <param name="proxyHost">The hostname of the proxy server.</param>
+            <param name="proxyPort">The port of the proxy server.</param>
+            <param name="userName">A user name to submit to the proxy server for authentication.</param>
+            <param name="password">A password to submit to the proxy server for authentication.</param>
+            <param name="domain">A domain to submit to the proxy server for authentication.</param>
+            <exception cref="T:System.ArgumentNullException">hostname is null.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">port is not between <see cref="F:System.Net.IPEndPoint.MinPort"></see> and <see cref="F:System.Net.IPEndPoint.MaxPort"></see>. </exception>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.BeginConnect(System.Net.IPAddress,System.Int32,System.AsyncCallback,System.Object)">
+            <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by an <see cref="T:System.Net.IPAddress"></see> and a port number (<see cref="T:System.Int32"></see>).</summary>
+            <returns>An <see cref="T:System.IAsyncResult"></see> object that references the asynchronous connection.</returns>
+            <param name="address">The <see cref="T:System.Net.IPAddress"></see> of the remote host.</param>
+            <param name="state">A user-defined object that contains information about the connect operation. This object is passed to the requestCallback delegate when the operation is complete.</param>
+            <param name="port">The port number of the remote host.</param>
+            <param name="requestCallback">An <see cref="T:System.AsyncCallback"></see> delegate that references the method to invoke when the operation is complete. </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <exception cref="T:System.ArgumentNullException">The address parameter is null. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Net.SocketPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.BeginConnect(System.Net.IPAddress,System.Int32,System.Object)">
+            <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by an <see cref="T:System.Net.IPAddress"></see> and a port number (<see cref="T:System.Int32"></see>).</summary>
+            <returns>An <see cref="T:System.IAsyncResult"></see> object that references the asynchronous connection.</returns>
+            <param name="address">The <see cref="T:System.Net.IPAddress"></see> of the remote host.</param>
+            <param name="state">A user-defined object that contains information about the connect operation. This object is passed to the requestCallback delegate when the operation is complete.</param>
+            <param name="port">The port number of the remote host.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <exception cref="T:System.ArgumentNullException">The address parameter is null. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Net.SocketPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.BeginConnect(System.Net.IPAddress,System.Int32)">
+            <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by an <see cref="T:System.Net.IPAddress"></see> and a port number (<see cref="T:System.Int32"></see>).</summary>
+            <returns>An <see cref="T:System.IAsyncResult"></see> object that references the asynchronous connection.</returns>
+            <param name="address">The <see cref="T:System.Net.IPAddress"></see> of the remote host.</param>
+            <param name="port">The port number of the remote host.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <exception cref="T:System.ArgumentNullException">The address parameter is null. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Net.SocketPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.BeginConnect(System.String,System.Int32,System.AsyncCallback,System.Object)">
+            <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by a host name (<see cref="T:System.String"></see>) and a port number (<see cref="T:System.Int32"></see>).</summary>
+            <returns>An <see cref="T:System.IAsyncResult"></see> object that references the asynchronous connection.</returns>
+            <param name="state">A user-defined object that contains information about the connect operation. This object is passed to the requestCallback delegate when the operation is complete.</param>
+            <param name="port">The port number of the remote host.</param>
+            <param name="requestCallback">An <see cref="T:System.AsyncCallback"></see> delegate that references the method to invoke when the operation is complete.</param>
+            <param name="host">The name of the remote host.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentNullException">The host parameter is null. </exception>
+            <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Net.SocketPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.BeginConnect(System.String,System.Int32,System.Object)">
+            <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by a host name (<see cref="T:System.String"></see>) and a port number (<see cref="T:System.Int32"></see>).</summary>
+            <returns>An <see cref="T:System.IAsyncResult"></see> object that references the asynchronous connection.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentNullException">The host parameter is null. </exception>
+            <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <param name="host">The name of the remote host.</param>
+            <param name="port">The port number of the remote host.</param>
+            <param name="state">A user-defined object that contains information about the connect operation. This object is passed to the requestCallback delegate when the operation is complete.</param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.BeginConnect(System.String,System.Int32)">
+            <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by a host name (<see cref="T:System.String"></see>) and a port number (<see cref="T:System.Int32"></see>).</summary>
+            <returns>An <see cref="T:System.IAsyncResult"></see> object that references the asynchronous connection.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentNullException">The host parameter is null. </exception>
+            <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <param name="host">The name of the remote host.</param>
+            <param name="port">The port number of the remote host.</param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.BeginConnect(System.Net.IPEndPoint,System.AsyncCallback,System.Object)">
+            <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by a host name (<see cref="T:System.String"></see>) and a port number (<see cref="T:System.Int32"></see>).</summary>
+            <returns>An <see cref="T:System.IAsyncResult"></see> object that references the asynchronous connection.</returns>
+            <param name="remoteEndPoint">The <see cref="T:System.Net.IPEndPoint"></see> to which you intend to connect. </param>
+            <param name="state">A user-defined object that contains information about the connect operation. This object is passed to the requestCallback delegate when the operation is complete.</param>
+            <param name="requestCallback">An <see cref="T:System.AsyncCallback"></see> delegate that references the method to invoke when the operation is complete.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentNullException">The host parameter is null. </exception>
+            <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Net.SocketPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.BeginConnect(System.Net.IPEndPoint,System.Object)">
+            <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by a host name (<see cref="T:System.String"></see>) and a port number (<see cref="T:System.Int32"></see>).</summary>
+            <returns>An <see cref="T:System.IAsyncResult"></see> object that references the asynchronous connection.</returns>
+            <param name="remoteEndPoint">The <see cref="T:System.Net.IPEndPoint"></see> to which you intend to connect. </param>
+            <param name="state">A user-defined object that contains information about the connect operation. This object is passed to the requestCallback delegate when the operation is complete.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentNullException">The host parameter is null. </exception>
+            <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Net.SocketPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.BeginConnect(System.Net.IPEndPoint)">
+            <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by a host name (<see cref="T:System.String"></see>) and a port number (<see cref="T:System.Int32"></see>).</summary>
+            <returns>An <see cref="T:System.IAsyncResult"></see> object that references the asynchronous connection.</returns>
+            <param name="remoteEndPoint">The <see cref="T:System.Net.IPEndPoint"></see> to which you intend to connect. </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentNullException">The host parameter is null. </exception>
+            <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Net.SocketPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.EndConnect(System.IAsyncResult)">
+            <summary>Asynchronously accepts an incoming connection attempt.</summary>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the <see cref="T:System.Net.Sockets.Socket"></see>. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ObjectDisposedException">The underlying <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <exception cref="T:System.ArgumentNullException">The asyncResult parameter is null. </exception>
+            <exception cref="T:System.InvalidOperationException">The <see cref="M:ComponentPro.Net.ProxyClient.EndConnect(System.IAsyncResult)"></see> method was previously called for the asynchronous connection. </exception>
+            <exception cref="T:System.ArgumentException">The asyncResult parameter was not returned by a call to a <see cref="M:ComponentPro.Net.ProxyClient.BeginConnect(System.Net.IPAddress,System.Int32,System.AsyncCallback,System.Object)"></see> method. </exception>
+            <param name="asyncResult">An <see cref="T:System.IAsyncResult"></see> object returned by a call to <see cref="M:ComponentPro.Net.ProxyClient.BeginConnect(System.Net.IPAddress,System.Int32,System.AsyncCallback,System.Object)"></see>.</param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.Close">
+            <summary>Disposes this <see cref="T:ComponentPro.Net.ProxyClient"></see> instance without closing the underlying connection.</summary>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.Connect(System.Net.IPEndPoint)">
+            <summary>Connects the client to a remote TCP host using the specified remote network endpoint.</summary>
+            <param name="remoteEndPoint">The <see cref="T:System.Net.IPEndPoint"></see> to which you intend to connect. </param>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentNullException">remoteEp is null. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:ComponentPro.Net.ProxyClient"></see> is closed. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Net.SocketPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.Connect(System.Net.IPAddress,System.Int32)">
+            <summary>Connects the client to a remote TCP host using the specified IP address and port number.</summary>
+            <param name="address">The <see cref="T:System.Net.IPAddress"></see> of the host to which you intend to connect. </param>
+            <param name="port">The port number to which you intend to connect. </param>
+            <exception cref="T:System.ArgumentNullException">address parameter is null. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">The port is not between <see cref="F:System.Net.IPEndPoint.MinPort"></see> and <see cref="F:System.Net.IPEndPoint.MaxPort"></see>. </exception>
+            <exception cref="T:System.ObjectDisposedException"><see cref="T:ComponentPro.Net.ProxyClient"></see> is closed. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Diagnostics.PerformanceCounterPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Net.SocketPermission, System, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.Connect(System.String,System.Int32)">
+            <summary>Connects the client to the specified port on the specified host.</summary>
+            <exception cref="T:System.ArgumentNullException">hostname is null. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">port is not between <see cref="F:System.Net.IPEndPoint.MinPort"></see> and <see cref="F:System.Net.IPEndPoint.MaxPort"></see>. </exception>
+            <exception cref="T:System.ObjectDisposedException"><see cref="T:ComponentPro.Net.ProxyClient"></see> is closed. </exception>
+            <param name="hostname">The DNS name of the remote host to which you intend to connect. </param>
+            <param name="port">The port number of the remote host to which you intend to connect. </param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.Disconnect">
+            <summary>
+            Informs the proxy server that the connection is about to close and terminates the connection.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.Dispose(System.Boolean)">
+            <summary>Releases the unmanaged resources used by the <see cref="T:ComponentPro.Net.ProxyClient"></see> and optionally releases the managed resources.</summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources. </param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.Finalize">
+            <summary>Frees resources used by the <see cref="T:ComponentPro.Net.ProxyClient"></see> class.</summary>
+        </member>
+        <member name="M:ComponentPro.Net.ProxyClient.GetStream">
+            <summary>Returns the <see cref="T:System.Net.Sockets.NetworkStream"></see> used to send and receive data.</summary>
+            <returns>The underlying <see cref="T:System.Net.Sockets.NetworkStream"></see>.</returns>
+            <exception cref="T:System.InvalidOperationException">The <see cref="T:ComponentPro.Net.ProxyClient"></see> is not connected to a remote host. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:ComponentPro.Net.ProxyClient"></see> has been closed. </exception>
+        </member>
+        <member name="E:ComponentPro.Net.ProxyClient.ConnectCompleted">
+            <summary>
+            Occurs after a BeginConnect call has been completed.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.Active">
+            <summary>Gets or set a value that indicates whether a connection has been made.</summary>
+            <returns>true if the connection has been made; otherwise, false.</returns>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.Available">
+            <summary>Gets the amount of data that has been received from the network and is available to be read.</summary>
+            <returns>The number of bytes of data received from the network and available to be read.</returns>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
+            <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" /></PermissionSet>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.ClientSocket">
+            <summary>Gets the underlying <see cref="T:System.Net.Sockets.Socket"></see>.</summary>
+            <returns>The underlying network <see cref="T:System.Net.Sockets.Socket"></see>.</returns>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.Connected">
+            <summary>Gets a value indicating whether the underlying <see cref="T:System.Net.Sockets.Socket"></see> for a <see cref="T:ComponentPro.Net.ProxyClient"></see> is connected to a remote host.</summary>
+            <returns>true if the <see cref="P:ComponentPro.Net.ProxyClient.ClientSocket"></see> socket was connected to a remote resource as of the most recent operation; otherwise, false.</returns>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.ExclusiveAddressUse">
+            <summary>Gets or sets a <see cref="T:System.Boolean"></see> value that specifies whether the <see cref="T:ComponentPro.Net.ProxyClient"></see> allows only one client to use a port.</summary>
+            <returns>true if the <see cref="T:ComponentPro.Net.ProxyClient"></see> allows only one client to use a specific port; otherwise, false. The default is true for Windows Server 2003 and Windows XP Service Pack 2 and later, and false for all other versions.</returns>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the underlying socket.</exception>
+            <exception cref="T:System.ObjectDisposedException">The underlying <see cref="T:System.Net.Sockets.Socket"></see> has been closed. </exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.LingerState">
+            <summary>Gets or sets information about the sockets linger time.</summary>
+            <returns>A <see cref="T:System.Net.Sockets.LingerOption"></see>. By default, lingering is disabled.</returns>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.NoDelay">
+            <summary>Gets or sets a value that disables a delay when send or receive buffers are not full.</summary>
+            <returns>true if the delay is disabled, otherwise false. The default value is false.</returns>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.ReceiveBufferSize">
+            <summary>Gets or sets the size of the receive buffer.</summary>
+            <returns>The size of the receive buffer, in bytes. The default value is 8192 bytes.</returns>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when setting the buffer size.-or-In .NET Compact Framework applications, you cannot set this property. For a workaround, see the Platform Note in Remarks.</exception>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.ReceiveTimeout">
+            <summary>Gets or sets the amount of time a <see cref="T:ComponentPro.Net.ProxyClient"></see> will wait to receive data once a read operation is initiated.</summary>
+            <returns>The time-out value of the connection in milliseconds. The default value is 0.</returns>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.SendBufferSize">
+            <summary>Gets or sets the size of the send buffer.</summary>
+            <returns>The size of the send buffer, in bytes. The default value is 8192 bytes.</returns>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.SendTimeout">
+            <summary>Gets or sets the amount of time a <see cref="T:ComponentPro.Net.ProxyClient"></see> will wait for a send operation to complete successfully.</summary>
+            <returns>The send time-out value, in milliseconds. The default is 0.</returns>
+            <PermissionSet><IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, ProtocolVersion=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" /></PermissionSet>        
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.Family">
+            <summary>
+            Gets or sets the addressing scheme that an instance of the ProxySocket class can use.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.ProxyType">
+            <summary>
+            Gets or sets the proxy type.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.AuthenticationMethod">
+            <summary>
+            Gets or sets the authentication method.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.ProxyHost">
+            <summary>
+            Gets or sets the hostname of the proxy server.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.ProxyPort">
+            <summary>
+            Gets or sets the port of the proxy server.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.UserName">
+            <summary>
+            Gets or sets the user name to submit to the proxy server for authentication.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.Password">
+            <summary>
+            Gets or sets password to submit to the proxy server for authentication.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Net.ProxyClient.Domain">
+            <summary>
+            Gets or sets the domain to submit to the proxy server for authentication.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Net.ProxyHttpConnectAuthMethod">
+            <summary>
+            Defines HTTP CONNECT proxy server authentication methods.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxyHttpConnectAuthMethod.Basic">
+            <summary>
+            Basic authentication.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxyHttpConnectAuthMethod.Ntlm">
+            <summary>
+            NTLM authentication.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Net.ProxySocketException">
+            <summary>
+            The exception that is thrown when a proxy error or socket error occurs.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Net.ProxySocketException.#ctor(System.Net.Sockets.SocketException)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Net.ProxySocketException" /> class with the reference to the socket exception that is the cause of this exception.
+            </summary>
+            <param name="e">The socket exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxySocketException.#ctor(System.String,ComponentPro.Net.ProxySocketExceptionStatus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Net.ProxySocketException" /> class with the specified error message and status.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="status">One of the <see cref="T:ComponentPro.Net.ProxySocketExceptionStatus" /> values.</param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxySocketException.#ctor(System.String,ComponentPro.Net.ProxySocketExceptionStatus,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Net.ProxySocketException" /> class with the specified error message, status,
+            and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="status">One of the <see cref="T:ComponentPro.Net.ProxySocketExceptionStatus" /> values.</param>
+            <param name="innerException">The exception that is the cause of the current exception. If the <i>innerException</i> parameter is not a null reference, the current exception is raised in a <b>catch</b> block that handles the inner exception.</param>
+        </member>
+        <member name="M:ComponentPro.Net.ProxySocketException.GetSocketExceptionMessage(System.Net.Sockets.SocketException)">
+            <summary>
+            Returns an exception message for the supplied SocketException.
+            </summary>
+            <param name="error">Socket exception.</param>
+            <returns>Exception message.</returns>
+        </member>
+        <member name="P:ComponentPro.Net.ProxySocketException.ErrorCode">
+            <summary>
+            Gets the error code associated with this exception if the error status is <see cref="T:ComponentPro.Net.ProxySocketExceptionStatus">SocketError</see>. Returns 0 otherwise.
+            </summary>
+            <value>An integer error code associated with this exception (or 0).</value>
+        </member>
+        <member name="P:ComponentPro.Net.ProxySocketException.Status">
+            <summary>
+            Gets the status of the error.
+            </summary>
+            <value>One of the <see cref="T:ComponentPro.Net.ProxySocketExceptionStatus" /> values.</value>
+        </member>
+        <member name="T:ComponentPro.Net.ProxySocketExceptionStatus">
+            <summary>
+            Defines status codes for the <see cref="T:ComponentPro.Net.ProxySocketException" /> class.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.ConnectionFailed">
+            <summary>
+            Connection failed.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.ConnectionClosed">
+            <summary>
+            Connection has been closed.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.SocketError">
+            <summary>
+            Socket error.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.UnknownHost">
+            <summary>
+            Unknown host name.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.ProtocolError">
+            <summary>
+            The response received from the server was complete but indicated a protocol-level error.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.UnknownError">
+            <summary>
+            Unknown error.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.InvalidResponse">
+            <summary>
+            Received an invalid response from the server.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.AsyncCallError">
+            <summary>
+            An error occurred while invoking the asynchronous method.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.NotConnected">
+            <summary>
+            Not connected to the proxy server.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.Timeout">
+            <summary>
+            Timeout error.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxySocketExceptionStatus.Unsupported">
+            <summary>
+            The operation is not supported.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Net.ProxySocks5">
+            <summary>
+            Implements Socks5 protocol.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Net.ProxyType">
+            <summary>
+            Defines proxy types to use to connect to the remote machine.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxyType.None">
+            <summary>
+            No proxy server selected.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxyType.Socks4">
+            <summary>
+            SOCKS4 proxy server.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxyType.Socks4A">
+            <summary>
+            SOCKS4A proxy server.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxyType.Socks5">
+            <summary>
+            SOCKS5 proxy server.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxyType.HttpConnect">
+            <summary>
+            HTTP CONNECT proxy server.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.ProxyType.SendToProxy">
+            <summary>
+            Data will be directly sent to the proxy.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Net.SecurityMode">
+            <summary>
+            Defines the connection security mode.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.SecurityMode.None">
+            <summary>
+            Unsecured connection.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.SecurityMode.Implicit">
+            <summary>
+            Implicitly secured connection.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Net.SecurityMode.Explicit">
+            <summary>
+            Explicitly secured connection.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Net.WebProxyEx">
+            <summary>
+            Represents the proxy settings for a socket connection.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.#ctor">
+            <summary>
+            Initializes an empty instance of the <see cref="T:System.Net.WebProxy" /> class.
+            </summary>
+            <remarks>
+            The default constructor initializes an empty instance of the <see cref="T:ComponentPro.Net.WebProxyEx" />
+            class with the <see cref="P:ComponentPro.Net.WebProxyEx.ProxyType" /> property set to <see cref="P:ComponentPro.Net.WebProxyEx.ProxyType">ProxyType.None</see>.
+            When the <see cref="P:ComponentPro.Net.WebProxyEx.ProxyType" /> is set to <see cref="P:ComponentPro.Net.WebProxyEx.ProxyType">ProxyType.None</see>, the <see cref="M:ComponentPro.Net.WebProxyEx.IsBypassed(System.Uri)" /> method
+            returns <b>true</b>, and the <see cref="M:ComponentPro.Net.WebProxyEx.GetProxy(System.Uri)" /> method returns the destination address.
+            </remarks>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.#ctor(ComponentPro.Net.ProxyType,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Net.WebProxyEx" /> class with the specified type, hostname, and port.
+            </summary>
+            <param name="proxyType">The type of the proxy.</param>
+            <param name="host">The hostname of the proxy server.</param>
+            <param name="port">The port of the proxy server.</param>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.#ctor(ComponentPro.Net.ProxyType,System.String,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Net.WebProxyEx" /> class with the specified type, hostname, port, and username.
+            </summary>
+            <param name="proxyType">The type of the proxy.</param>
+            <param name="host">The hostname of the proxy server.</param>
+            <param name="port">The port of the proxy server.</param>
+            <param name="username">A user name to submit to the proxy server for authentication.</param>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.#ctor(ComponentPro.Net.ProxyType,ComponentPro.Net.ProxyHttpConnectAuthMethod,System.String,System.Int32,System.Net.NetworkCredential)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Net.WebProxyEx" /> 
+            class with the specified type, hostname, port, and credentials
+            with base authentification.
+            </summary>
+            <param name="proxyType">The type of the proxy.</param>
+            <param name="authenticationMethod">Authentication method.</param>
+            <param name="host">The hostname of the proxy server.</param>
+            <param name="port">The port of the proxy server.</param>
+            <param name="domain">The domain name.</param>
+            <param name="userName">The user name.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.#ctor(ComponentPro.Net.ProxyType,ComponentPro.Net.ProxyHttpConnectAuthMethod,System.String,System.Int32,System.Boolean,System.Net.NetworkCredential)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Net.WebProxyEx" /> 
+            class with the specified type, hostname, port, bypass setting, list of URIs to bypass, and credentials,
+            with base authentification.
+            </summary>
+            <param name="proxyType">The type of the proxy.</param>
+            <param name="authenticationMethod">Authentication method.</param>
+            <param name="host">The hostname of the proxy server.</param>
+            <param name="port">The port of the proxy server.</param>
+            <param name="bypassOnLocal"><b>true</b> to bypass the proxy for local addresses; otherwise, <b>false</b>.</param>
+            <param name="domain">The domain name.</param>
+            <param name="userName">The user name.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.Clone">
+            <summary>
+            Creates a copy of the <see cref="T:ComponentPro.Net.WebProxyEx" /> instance.
+            </summary>
+            <returns>A new <see cref="T:ComponentPro.Net.WebProxyEx" /> instance.</returns>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.GetProxy(System.Uri)">
+            <summary>
+            Returns the proxied URI for a destination.
+            </summary>
+            <param name="destination">The <see cref="T:System.Uri" /> of the requested server.</param>
+            <returns>The <see cref="T:System.Uri" /> of the server if the resource is on the bypass list; otherwise, the <see cref="T:System.Uri" /> of the proxy.</returns>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.IsBypassed(System.Uri)">
+            <summary>
+            Indicates whether to use the proxy server for the specified host.
+            </summary>
+            <param name="host">The <see cref="T:System.Uri" /> of the host to check for proxy use.</param>
+            <returns><b>true</b> if the proxy server should not be used for <i>host</i>; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.IsBypassed(System.String,System.Int32)">
+            <summary>
+            Indicates whether to use the proxy server for the specified host.
+            </summary>
+            <param name="hostName">The host address to check for proxy use.</param>
+            <param name="port">The port port.</param>
+            <returns><b>true</b> if the proxy server should not be used for <i>host</i>; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.ToString">
+            <summary>
+            Returns a string representation of this proxy.
+            </summary>
+            <returns>String representation of this proxy.</returns>
+        </member>
+        <member name="M:ComponentPro.Net.WebProxyEx.SetLocalPortRange(System.Int32,System.Int32)">
+            <summary>
+            Sets local port range.
+            </summary>
+            <param name="min">The minimum port number.</param>
+            <param name="max">The maximum port number.</param>
+        </member>
+        <member name="P:ComponentPro.Net.WebProxyEx.HttpConnectAuthMethod">
+            <summary>
+            Gets or sets the authentication method to use for HTTP CONNECT proxy.
+            NTLM authentication is only supported by some HTTP CONNECT proxies.
+            </summary>
+            <value>An authentication method.</value>
+        </member>
+        <member name="P:ComponentPro.Net.WebProxyEx.BypassProxyOnLocal">
+            <summary>
+            Gets or sets a value indicating whether to bypass the proxy server for local addresses.
+            </summary>
+            <value><b>true</b> to bypass the proxy server for local addresses; otherwise, <b>false</b>. The default value is <b>false</b>.</value>
+        </member>
+        <member name="P:ComponentPro.Net.WebProxyEx.Credentials">
+            <summary>
+            Gets or sets the credentials to submit to the proxy server for authentication.
+            Password authentication is not supported by SOCKS4 and SOCKS4a.
+            </summary>
+            <value>An <see cref="T:System.Net.ICredentials" /> containing the credentials to submit to the proxy server for authentication.</value>
+            <remarks>Only credentials of type <see cref="T:System.Net.NetworkCredential" /> are supported.</remarks>
+        </member>
+        <member name="P:ComponentPro.Net.WebProxyEx.Domain">
+            <summary>
+            Gets or sets the domain to submit to the proxy server for authentication.
+            </summary>
+            <value>A domain to submit to the proxy server for authentication.</value>
+        </member>
+        <member name="P:ComponentPro.Net.WebProxyEx.Server">
+            <summary>
+            Gets or sets the hostname of the proxy server.
+            </summary>
+            <value>The hostname of the proxy server.</value>
+        </member>
+        <member name="P:ComponentPro.Net.WebProxyEx.Password">
+            <summary>
+            Gets or sets the password to submit to the proxy server for authentication.
+            Password authentication is not supported by SOCKS4 and SOCKS4a.
+            </summary>
+            <value>A password to submit to the proxy server for authentication.</value>
+        </member>
+        <member name="P:ComponentPro.Net.WebProxyEx.Port">
+            <summary>
+            Gets or sets the port of the proxy server.
+            </summary>
+            <value>The port of the proxy server.</value>
+        </member>
+        <member name="P:ComponentPro.Net.WebProxyEx.ProxyType">
+            <summary>
+            Gets or sets the type of the proxy server.
+            </summary>
+            <value>The type of the proxy server.</value>
+        </member>
+        <member name="P:ComponentPro.Net.WebProxyEx.UserName">
+            <summary>
+            Gets or sets the username to submit to the proxy server for authentication.
+            </summary>
+            <value>A username to submit to the proxy server for authentication.</value>
+        </member>
+        <member name="T:ComponentPro.Security.CertificateRequiredEventHandler">
+            <summary>Represents that method that will handle the <b>CertificateRequired</b> event.</summary>
+            <param name="sender">The object on which the method was called.</param>
+            <param name="e">A <see cref="T:ComponentPro.Security.CertificateRequiredEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="T:ComponentPro.Security.CertificateRequiredEventArgs">
+            <summary>
+            Provides information on the certificate that the server requires from the client.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Security.CertificateRequiredEventArgs.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Security.CertificateRequiredEventArgs"/> class.
+            </summary>
+            <param name="cert">The certificate.</param>
+        </member>
+        <member name="P:ComponentPro.Security.CertificateRequiredEventArgs.Certificate">
+            <summary>
+            Gets or sets the client's certificate that is required by the server, or null to try to search for the certificate in the store.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Security.CertificateReceivedEventHandler">
+            <summary>Represents that method that will handle the <b>CertificateReceived</b> event.</summary>
+            <param name="sender">The object on which the method was called.</param>
+            <param name="e">A <see cref="T:ComponentPro.Security.CertificateReceivedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="T:ComponentPro.Security.CertificateReceivedEventArgs">
+            <summary>
+            Provides information on the certificate that is received from the server.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Security.CertificateReceivedEventArgs.ServerCertificate">
+            <summary>
+            Gets the certificate received from the server.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Security.CertificateReceivedEventArgs.Status">
+            <summary>
+            Gets the verification status of the certificate received from the server.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Security.CertificateReceivedEventArgs.Accept">
+            <summary>
+            Gets or sets a boolean value indicating whether to accept <see cref="P:ComponentPro.Security.CertificateReceivedEventArgs.ServerCertificate">the certificated</see> received from the server.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Security.CertificateReceivedEventArgs.ErrorCode">
+            <summary>
+            Gets the verification error code.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Security.CertificateReceivedEventArgs.AddToTrustedRoot">
+            <summary>
+            Gets or sets a boolean value indicating whether to add this certificate to the trusted list.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Security.Certificates.X509CertificateException">
+            <summary>
+            Represents the exception that is thrown when a certificate-related error occurs.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Security.Certificates.X509CertificateException.#ctor">
+            <summary>
+            Initializes a new instance of the Exception class
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Security.Certificates.X509CertificateException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Exception class
+            with a specified error message.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:ComponentPro.Security.Certificates.X509CertificateException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Security.Certificates.X509CertificateException"/> class
+            with a specified error message and a reference to the
+            inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="T:ComponentPro.Security.Certificates.CertificateVerificationStatus">
+            <summary>
+            Specifies the certificate validation status.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.CtlInvalidSignature">
+            <summary>
+            A CTL used to create this chain did not have a valid signature.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.CtlInvalidTime">
+            <summary>
+            A CTL used to create this chain was not time valid.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.CtlNotValidForUsage">
+            <summary>
+            A CTL used to create this chain is not valid for this usage.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.CyclicChain">
+            <summary>
+            One of the certificates in the chain was issued by a certification authority that the original certificate had certified.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.Expired">
+            <summary>
+            This certificate or one of the certificates in the certificate chain is not time valid.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.HasExcludedNameConstraint">
+            <summary>
+            The certificate or one of the certificates in the certificate chain has a name constraints extension and one of the name choices in the end certificate is explicitly excluded.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.NotDefinedNameConstraint">
+            <summary>
+            The certificate or one of the certificates in the certificate chain has a name constraints extension and a name constraint is missing for one of the name choices in the end certificate.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.NotPermittedNameConstraint">
+            <summary>
+            The certificate or one of the certificates in the certificate chain has a name constraints extension and there is not a permitted name constraint for one of the name choices in the end certificate.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.UnsupportedNameConstraint">
+            <summary>
+            The certificate or one of the certificates in the certificate chain has a name constraints extension containing unsupported fields.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.CNNotMatch">
+            <summary>
+            The certificate's CN name does not match the passed value.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.IncompleteChain">
+            <summary>
+            The certificate chain is not compete.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.InvalidBasicConstraints">
+            <summary>
+            The certificate or one of the certificates in the certificate chain has
+            a basic constraints extension and either the certificate cannot be used
+            to issue other certificates or the chain path length has been exceeded.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.InvalidExtension">
+            <summary>
+            One of the certificates has an invalid extension.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.InvalidNameConstraints">
+            <summary>
+            The certificate or one of the certificates in the certificate chain has
+            an invalid name constraints extension.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.InvalidPolicyConstraints">
+            <summary>
+            The certificate or one of the certificates in the certificate chain has
+            a policy constraints extension, and one of the issued certificates has
+            a disallowed policy mapping extension or does not have a required issuance
+            policies extension.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.MoreErrors">
+            <summary>
+            There might be more errors apart from those reported.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.NoIssuanceChainPolicy">
+            <summary>
+            The end certificate does not have any resultant issuance policies, and one of the issuing CA certificates has a policy constraints extension requiring it.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.OfflineRev">
+            <summary>
+            The revocation status of the certificate or one of the certificates in the certificate chain is either off-line or stale.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.Revoked">
+            <summary>
+            Trust for this certificate or one of the certificates in the certificate chain has been revoked.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.RootNotTrusted">
+            <summary>
+            The certificate or certificate chain is based on an untrusted root.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.SignatureNotValid">
+            <summary>
+            The certificate or one of the certificates in the certificate chain does not have a valid signature.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.TimeNotNested">
+            <summary>
+            Certificates in the chain are not properly time nested.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.UnknownError">
+            <summary>
+            Unknown error.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.UnknownRev">
+            <summary>
+            The revocation status of the certificate or one of the certificates in the certificate chain is unknown.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.WrongUsage">
+            <summary>
+            The certificate or certificate chain is not valid for its proposed usage.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.CertificateVerificationStatus.Valid">
+            <summary>
+            The certificate is valid.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Security.Certificates.HashAlgorithmType">
+            <summary>
+            Specifies the hash algorithm used to compute the hash for hash signing and verification methods.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.HashAlgorithmType.MD5">
+            <summary>
+            MD5.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.HashAlgorithmType.MD5SHA1">
+            <summary>
+            MD5SHA1.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.HashAlgorithmType.SHA1">
+            <summary>
+            SHA1.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Certificates.HashAlgorithmType.Unsupported">
+            <summary>
+            Unsupported hash algorithm.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Security.Certificates.X509Certificate.GetEnhancedKeyUsageIds">
+            <summary>
+            Returns an array of enhanced key usage identifiers.
+            </summary>
+            <returns>An array of enhanced key usage identifiers, or null if the certificate is valid for all uses.</returns>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.Pkcs.CmsPkcsSignedData.Clone">
+            <summary>
+            Creates a copy of this object.
+            </summary>
+            <returns>A new object.</returns>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.Pkcs.SMimeCapability.#ctor(ComponentPro.Security.Cryptography.ObjectIdentifier)">
+            <summary>
+            Initializes an instance of a <see cref="T:ComponentPro.Security.Cryptography.Pkcs.SMimeCapability" /> with no parameters.
+            </summary>
+            <param name="oid">The object identifier that identifies the S//MIME capability.</param>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.Pkcs.SMimeCapability.#ctor(ComponentPro.Security.Cryptography.ObjectIdentifier,System.Byte[])">
+            <summary>
+            Initializes an instance of a <see cref="T:ComponentPro.Security.Cryptography.Pkcs.SMimeCapability" />.
+            </summary>
+            <param name="oid">The object identifier that identifies the S//MIME capability.</param>
+            <param name="parameters">Capability parameters in ASN.1 format.</param>
+        </member>
+        <member name="P:ComponentPro.Security.Cryptography.Pkcs.SMimeCapability.Oid">
+            <summary>
+            Gets the object identifier that identifies the S/MIME capability.
+            </summary>
+            <value>The object identifier.</value>
+        </member>
+        <member name="P:ComponentPro.Security.Cryptography.Pkcs.SMimeCapability.Parameters">
+            <summary>
+            Gets the S/MIME capability parameters.
+            </summary>
+            <value>An array of bytes in ASN.1 format.</value>
+        </member>
+        <member name="F:ComponentPro.Security.Cryptography.DiffieHellmanAlgorithm.KeySizeValue">
+            <summary>
+            Represents the size, in bits, of the key modulus used by <see cref="T:ComponentPro.Security.Cryptography.DiffieHellman" />.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Cryptography.DiffieHellmanAlgorithm.LegalKeySizesValue">
+            <summary>
+            Specifies the key sizes that are supported by <see cref="T:ComponentPro.Security.Cryptography.DiffieHellman" />.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.DiffieHellmanAlgorithm.Clear">
+            <summary>
+            Releases all resources used by the <see cref="T:ComponentPro.Security.Cryptography.DiffieHellman" /> class.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.DiffieHellmanAlgorithm.Dispose(System.Boolean)">
+            <summary>
+            When overridden in a derived class, releases the unmanaged resources
+            used by the <see cref="T:System.Security.Cryptography.AsymmetricAlgorithm" /> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="P:ComponentPro.Security.Cryptography.DiffieHellmanAlgorithm.KeyExchangeAlgorithm">
+            <summary>
+            Gets the name of the key exchange algorithm.
+            </summary>
+            <value>The name of the key exchange algorithm.</value>
+        </member>
+        <member name="P:ComponentPro.Security.Cryptography.DiffieHellmanAlgorithm.KeySize">
+            <summary>
+            Gets or sets the size, in bits, of the key modulus used by <see cref="T:ComponentPro.Security.Cryptography.DiffieHellman" />.
+            </summary>
+            <value>The size, in bits, of the key modulus used by <see cref="T:ComponentPro.Security.Cryptography.DiffieHellman" />.</value>
+        </member>
+        <member name="P:ComponentPro.Security.Cryptography.DiffieHellmanAlgorithm.LegalKeySizes">
+            <summary>
+            Gets the key sizes that are supported by <see cref="T:ComponentPro.Security.Cryptography.DiffieHellman" />.
+            </summary>
+            <value>An array that contains the key sizes supported by <see cref="T:ComponentPro.Security.Cryptography.DiffieHellman" />.</value>
+        </member>
+        <member name="P:ComponentPro.Security.Cryptography.DiffieHellmanAlgorithm.SignatureAlgorithm">
+            <summary>
+            Gets the name of the signature algorithm.
+            </summary>
+            <value>The name of the signature algorithm.</value>
+        </member>
+        <member name="T:ComponentPro.Security.Cryptography.KeyedHashAlgorithm">
+            <summary>
+            Represents the abstract class from which all implementations of keyed hash algorithms must derive.
+            </summary>
+        </member>
+        <member name="F:ComponentPro.Security.Cryptography.KeyedHashAlgorithm.KeyValue">
+            <summary>
+            The key to use in the hash algorithm.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.KeyedHashAlgorithm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Xtra.Security.Cryptography.KeyedHashAlgorithm" /> class. 
+            </summary>
+            <remarks>
+            You cannot create an instance of an abstract class.
+            Create an instance of a derived class instead.
+            </remarks>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.KeyedHashAlgorithm.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:Xtra.Security.Cryptography.KeyedHashAlgorithm" /> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="P:ComponentPro.Security.Cryptography.KeyedHashAlgorithm.Key">
+            <summary>
+            Gets or sets the key to use in the hash algorithm.
+            </summary>
+            <value>The key to use in the hash algorithm.</value>
+        </member>
+        <member name="T:ComponentPro.Security.Cryptography.DeriveBytes">
+            <summary>
+            Represents the abstract base class from which all classes that derive byte sequences of a specified length inherit.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.DeriveBytes.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Xtra.Security.Cryptography.DeriveBytes" /> class.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.DeriveBytes.GetBytes(System.Int32)">
+            <summary>
+            Returns derived bytes.
+            </summary>
+            <param name="cb">The number of bytes to return.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ComponentPro.Security.Cryptography.DeriveBytes.Reset">
+            <summary>
+            Resets the state of the operation.
+            </summary>
+        </member>
+        <member name="T:ComponentPro.Security.SecuritySettings">
+            <summary>
+            Provides security settings.
+            </summary>
+        </member>
+        <member name="P:ComponentPro.Security.SecuritySettings.FipsAlgorithmsOnly">
+            <summary>
+            Gets or sets a boolean value indicating whether only FIPS 140-1 compliant cryptographic algorithm providers are to be used.
+            </summary>
+            <value>True if only FIPS 140-1 compliant algorithms are to be used; otherwise, false to allow all supported algorithms.</value>
+        </member>
+        <member name="T:ComponentPro.Net.SecureSocketException">
+            <summary>
+            Represents the exception that is thrown when a TLS/SSL error occurs.
+            </summary>
+        </member>
+        <member name="M:ComponentPro.Net.SecureSocketException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Net.SecureSocketException" /> class with the specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:ComponentPro.Net.SecureSocketException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ComponentPro.Net.SecureSocketException" /> class with the specified error message
+            and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="inner">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:ComponentPro.Net.SecureSocketException.GetData(System.Object)">
+            <summary>
+            This method is only intended to be used internally by ComponentPro infrastructure.
+            </summary>
+            <param name="argument">Argument.</param>
+            <returns>Value.</returns>
+        </member>
+        <member name="M:ComponentPro.Net.TlsSslSocket.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:ComponentPro.Net.TlsSslSocket" /> class.
+            </summary>
+        </member>
+        <member name="T:System.Security.Cryptography.X509Certificates.StoreName">
+            <summary>
+            Specifies the name of the X.509 certificate store to open.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreName.AddressBook">
+            <summary>
+            The X.509 certificate store for other users.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreName.AuthRoot">
+            <summary>
+            The X.509 certificate store for third-party certificate authorities (CAs).
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreName.CertificateAuthority">
+            <summary>
+            The X.509 certificate store for intermediate certificate authorities (CAs).
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreName.Disallowed">
+            <summary>
+            The X.509 certificate store for revoked certificates.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreName.My">
+            <summary>
+            The X.509 certificate store for personal certificates.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreName.Root">
+            <summary>
+            The X.509 certificate store for trusted root certificate authorities (CAs).
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreName.TrustedPeople">
+            <summary>
+            The X.509 certificate store for directly trusted people and resources.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreName.TrustedPublisher">
+            <summary>
+            The X.509 certificate store for directly trusted publishers.
+            </summary>
+        </member>
+        <member name="T:System.Security.Cryptography.X509Certificates.X509Certificate2Collection">
+            <summary>
+            Represents a collection of <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> objects.
+            </summary>
+        </member>
+        <member name="T:System.Security.Cryptography.X509Certificates.X509Certificate2">
+            <summary>
+            Represents an X.509 certificate. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> class.
+            </summary>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> class.
+            </summary>
+            <param name="rawData">A byte array containing data from an X.509 certificate.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.#ctor(System.IntPtr)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> class.
+            </summary>
+            <param name="handle">A pointer to a certificate context in unmanaged code. The C structure is called PCCERT_CONTEXT.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> class.
+            </summary>
+            <param name="fileName">The name of a certificate file.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> class.
+            </summary>
+            <param name="fileName">The name of a certificate file.</param>
+            <param name="password">The password required to access the X.509 certificate data.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.Import(System.Byte[])">
+            <summary>
+            Populates the <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate"/> object with data from a byte array.
+            </summary>
+            <param name="rawData">A byte array containing data from an X.509 certificate.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.Import(System.String)">
+            <summary>
+            Populates the <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate"/> object with information from a certificate file.
+            </summary>
+            <param name="fileName">The name of a certificate file represented as a string.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.Import(System.String,System.String)">
+            <summary>
+            Populates the <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate"/> object with information from a certificate file.
+            </summary>
+            <param name="fileName">The name of a certificate file represented as a string.</param>
+            <param name="password">The password required to access the X.509 certificate data.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.Import(System.Byte[],System.String)">
+            <summary>
+            Populates the <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate"/> object with data from a byte array.
+            </summary>
+            <param name="rawData">A byte array containing data from an X.509 certificate.</param>
+            <param name="password">The password required to access the X.509 certificate data.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Certificate2.GetRawCertData">
+            <summary>
+            Returns the raw data for the entire X.509v3 certificate.
+            </summary>
+            <returns>A byte array containing the X.509 certificate data.</returns>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Certificate2.IssuerName">
+            <summary>
+            Gets the distinguished name of the certificate issuer.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Certificate2.Issuer">
+            <summary>
+            Gets the name of the certificate authority that issued the X.509v3 certificate.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Certificate2.Subject">
+            <summary>
+            Gets the subject distinguished name from the certificate.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Certificate2.NotAfter">
+            <summary>
+            Gets the date in local time after which a certificate is no longer valid.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Certificate2.NotBefore">
+            <summary>
+            Gets the date in local time on which a certificate becomes valid.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Certificate2.RawData">
+            <summary>
+            Gets the raw data of a certificate.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Certificate2.SerialNumber">
+            <summary>
+            Gets the serial number of a certificate.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Certificate2.SubjectName">
+            <summary>
+            Gets the subject distinguished name from a certificate.
+            </summary>
+        </member>
+        <member name="T:System.Security.Cryptography.X509Certificates.X500DistinguishedName">
+            <summary>
+             Represents the distinguished name of an X509 certificate.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X500DistinguishedName.Name">
+            <summary>
+            Gets the comma-delimited distinguished name from an X500 certificate.
+            </summary>
+        </member>
+        <member name="T:System.Security.Cryptography.X509Certificates.OpenFlags">
+            <summary>
+            Specifies the way to open the X.509 certificate store.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.OpenFlags.ReadOnly">
+            <summary>
+            Open the X.509 certificate store for reading only.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.OpenFlags.ReadWrite">
+            <summary>
+            Open the X.509 certificate store for both reading and writing.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.OpenFlags.MaxAllowed">
+            <summary>
+            Open the X.509 certificate store for the highest access allowed.
+            </summary>
+        </member>
+        <member name="T:System.Security.Cryptography.X509Certificates.StoreLocation">
+            <summary>
+            Specifies the location of the X.509 certificate store.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreLocation.CurrentUser">
+            <summary>
+            The X.509 certificate store used by the current user.
+            </summary>
+        </member>
+        <member name="F:System.Security.Cryptography.X509Certificates.StoreLocation.LocalMachine">
+            <summary>
+            The X.509 certificate store assigned to the local machine.
+            </summary>
+        </member>
+        <member name="T:System.Security.Cryptography.X509Certificates.X509Store">
+            <summary>
+            Represents an X.509 store, which is a physical store where certificates are
+            persisted and managed. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Store"/>
+            class using the personal certificates of the current user store.
+            </summary>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.#ctor(System.Security.Cryptography.X509Certificates.StoreLocation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Store"/>
+            class using the specified <see cref="T:System.Security.Cryptography.X509Certificates.StoreLocation"/> value.
+            </summary>
+            <param name="storeLocation">One of the <see cref="T:System.Security.Cryptography.X509Certificates.StoreLocation"/> values.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.#ctor(System.Security.Cryptography.X509Certificates.StoreName)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Store"/>
+            class using the specified <see cref="T:System.Security.Cryptography.X509Certificates.StoreName"/> value.    
+            </summary>
+            <param name="storeName">One of the <see cref="T:System.Security.Cryptography.X509Certificates.StoreName"/> values.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Store"/>
+            class using the specified store name.
+            </summary>
+            <param name="storeName">A string value representing the store name. See <see cref="T:System.Security.Cryptography.X509Certificates.StoreName"/> for more information.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.#ctor(System.Security.Cryptography.X509Certificates.StoreName,System.Security.Cryptography.X509Certificates.StoreLocation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Store"/>
+            class using the specified <see cref="T:System.Security.Cryptography.X509Certificates.StoreName"/>
+            and <see cref="T:System.Security.Cryptography.X509Certificates.StoreLocation"/> values.
+            </summary>
+            <param name="storeLocation">One of the <see cref="T:System.Security.Cryptography.X509Certificates.StoreLocation"/> values.</param>
+            <param name="storeName">One of the <see cref="T:System.Security.Cryptography.X509Certificates.StoreName"/> values.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.#ctor(System.String,System.Security.Cryptography.X509Certificates.StoreLocation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Store"/>
+            class using a string representing a value from the <see cref="T:System.Security.Cryptography.X509Certificates.StoreName"/>
+            enumeration and a value from the <see cref="T:System.Security.Cryptography.X509Certificates.StoreLocation"/> enumeration.
+            </summary>
+            <param name="storeLocation">One of the <see cref="T:System.Security.Cryptography.X509Certificates.StoreLocation"/> values.</param>
+            <param name="storeName">A string representing a value from the <see cref="T:System.Security.Cryptography.X509Certificates.StoreName"/> enumeration.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.Add(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Adds a certificate to an X.509 certificate store.
+            </summary>
+            <param name="certificate">An <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> object.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.Close">
+            <summary>
+            Closes an X.509 certificate store. 
+            </summary>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.Open(System.Security.Cryptography.X509Certificates.OpenFlags)">
+            <summary>
+            Opens an X.509 certificate store or creates a new store, depending on <see cref="T:System.Security.Cryptography.X509Certificates.OpenFlags"/> flag settings.
+            </summary>
+            <param name="flags">One the <see cref="T:System.Security.Cryptography.X509Certificates.OpenFlags"/> values.</param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509Store.Remove(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Removes a certificate from an X.509 certificate store.
+            </summary>
+            <param name="certificate">The certificate to remove.</param>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Store.Certificates">
+            <summary>
+            Returns a list of certificates located in an X.509 certificate store.
+            </summary>
+            <value>A list of <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2"/> object.</value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Store.Location">
+            <summary>
+            Gets the location of the X.509 certificate store.
+            </summary>
+            <value>One of the <see cref="T:System.Security.Cryptography.X509Certificates.StoreLocation"/> values.</value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.X509Store.Name">
+            <summary>
+            Gets the name of the X.509 certificate store.
+            </summary>
+        </member>
+    </members>
+</doc>

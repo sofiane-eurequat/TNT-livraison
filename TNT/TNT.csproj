@@ -1,0 +1,303 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BA4D917A-7B5E-4F1D-8AE7-5F72E6F27DEF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TNT</RootNamespace>
+    <AssemblyName>TNT</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>b2c48bd2-963d-4549-9169-1fa021dce484</PlatformID>
+    <OSVersion>5.2</OSVersion>
+    <DeployDirSuffix>TNT</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>Windows Mobile 6 Professional SDK</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ErikEJ.SqlCe, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telechargement\ErikEJ.SqlCe.dll</HintPath>
+    </Reference>
+    <Reference Include="ErikEJ.SqlCe40, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telechargement\ErikEJ.SqlCe40.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="Salient.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telechargement\Salient.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Symbol, Version=1.6.1.4, Culture=neutral, PublicKeyToken=68ec8db391f150ca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Inventaire\partie mobile\Inventway mc65 - versiob beta\Inventway\bin\Debug\Symbol.dll</HintPath>
+    </Reference>
+    <Reference Include="Symbol.Barcode, Version=1.6.1.18, Culture=neutral, PublicKeyToken=68ec8db391f150ca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Inventaire\partie mobile\Inventway mc65 - versiob beta\Inventway\bin\Debug\Symbol.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="Symbol.ResourceCoordination, Version=1.6.1.10, Culture=neutral, PublicKeyToken=68ec8db391f150ca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Inventaire\partie mobile\Inventway mc65 - versiob beta\Inventway\bin\Debug\Symbol.ResourceCoordination.dll</HintPath>
+    </Reference>
+    <Reference Include="Symbol.StandardForms, Version=1.6.1.5, Culture=neutral, PublicKeyToken=68ec8db391f150ca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Inventaire\partie mobile\Inventway mc65 - versiob beta\Inventway\bin\Debug\Symbol.StandardForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5\Profile\Client\System.configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=3.0.3600.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UltimateCommonCF, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ComponentPro\UltimateFtpCF v3.5.404.1253\Bin\UltimateCommonCF.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateFileSystemCF, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ComponentPro\UltimateFtpCF v3.5.404.1253\Bin\UltimateFileSystemCF.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateFtpCF, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ComponentPro\UltimateFtpCF v3.5.404.1253\Bin\UltimateFtpCF.dll</HintPath>
+    </Reference>
+    <Reference Include="UltimateProxyCF, Version=3.5.404.1253, Culture=neutral, PublicKeyToken=0efede2d78b28dff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ComponentPro\UltimateFtpCF v3.5.404.1253\Bin\UltimateProxyCF.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bdd_tntDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bdd_tntDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="check_in_out\check_in_out.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="check_in_out\check_in_out.Designer.cs">
+      <DependentUpon>check_in_out.cs</DependentUpon>
+    </Compile>
+    <Compile Include="check_in_out\menu_in_out.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="check_in_out\menu_in_out.Designer.cs">
+      <DependentUpon>menu_in_out.cs</DependentUpon>
+    </Compile>
+    <Compile Include="check_in_out\requete_check.cs" />
+    <Compile Include="check_in_out\scanne_in_out.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="check_in_out\scanne_in_out.Designer.cs">
+      <DependentUpon>scanne_in_out.cs</DependentUpon>
+    </Compile>
+    <Compile Include="check_in_out\traitement_check.cs" />
+    <Compile Include="ConfigurationManager.cs" />
+    <Compile Include="con_req\backup_connexion.cs" />
+    <Compile Include="con_req\backup_requete.cs" />
+    <Compile Include="con_req\connexion.cs" />
+    <Compile Include="con_req\Requete.cs" />
+    <Compile Include="Enlevement\AP.cs" />
+    <Compile Include="Enlevement\datastructure.cs" />
+    <Compile Include="Enlevement\exp_dest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Enlevement\exp_dest.Designer.cs">
+      <DependentUpon>exp_dest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enlevement\Info_exp_dest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Enlevement\Info_exp_dest.Designer.cs">
+      <DependentUpon>Info_exp_dest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enlevement\requete_enlevement.cs" />
+    <Compile Include="Enlevement\requete_signature.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Enlevement\scanne_fils.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Enlevement\scanne_fils.Designer.cs">
+      <DependentUpon>scanne_fils.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enlevement\structure_personne.cs" />
+    <Compile Include="Enlevement\traitement_enlevement.cs" />
+    <Compile Include="Enlevement\type_client.cs" />
+    <Compile Include="login\authentification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login\authentification.designer.cs">
+      <DependentUpon>authentification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login\requete_authentification.cs" />
+    <Compile Include="login\traitement_authentification.cs" />
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="check_in_out\check_in_out.resx">
+      <DependentUpon>check_in_out.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="check_in_out\menu_in_out.resx">
+      <DependentUpon>menu_in_out.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="check_in_out\scanne_in_out.resx">
+      <DependentUpon>scanne_in_out.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enlevement\exp_dest.resx">
+      <DependentUpon>exp_dest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enlevement\Info_exp_dest.resx">
+      <DependentUpon>Info_exp_dest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enlevement\scanne.resx">
+      <DependentUpon>scanne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enlevement\scanne_fils.resx">
+      <DependentUpon>scanne_fils.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login\authentification.resx">
+      <DependentUpon>authentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reception\recept_info_sup.resx">
+      <DependentUpon>recept_info_sup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reception\recpt.resx">
+      <DependentUpon>recpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="syncro\syncro.resx">
+      <DependentUpon>syncro.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enlevement\scanne.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Enlevement\scanne.Designer.cs">
+      <DependentUpon>scanne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reception\recept_info_sup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reception\recept_info_sup.Designer.cs">
+      <DependentUpon>recept_info_sup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reception\recpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reception\recpt.Designer.cs">
+      <DependentUpon>recpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reception\requete_reception.cs" />
+    <Compile Include="reception\struc_recept.cs" />
+    <Compile Include="reception\traitement_reception.cs" />
+    <Compile Include="syncro\requete_download.cs" />
+    <Compile Include="syncro\requete_upload.cs" />
+    <Compile Include="syncro\syncro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="syncro\syncro.Designer.cs">
+      <DependentUpon>syncro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="syncro\traitement_download.cs" />
+    <Compile Include="syncro\traitement_upload.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bdd_tnt.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="backup_tnt.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="bdd_tntDataSet.xsc">
+      <DependentUpon>bdd_tntDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="bdd_tntDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bdd_tntDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bdd_tntDataSet.xss">
+      <DependentUpon>bdd_tntDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Demarrer tournée\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
