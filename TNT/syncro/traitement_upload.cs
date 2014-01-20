@@ -125,7 +125,12 @@ namespace TNT.syncro
         {
             try
             {
+                
                 Ftp client = new Ftp();
+
+                FtpExceptionStatus ex = new FtpExceptionStatus();
+               
+
                 client.Connect(server);
                 client.Authenticate(user, pw);
                 
@@ -164,7 +169,8 @@ namespace TNT.syncro
                 client.UploadFile(u_pers_type, u_serv_pers_type);
                 client.UploadFile(u_reception,u_serv_reception);
                 client.UploadFile(u_utilisateur,u_serv_utilisateur);
-
+                
+                
 
                 client.Disconnect();
 
@@ -178,12 +184,17 @@ namespace TNT.syncro
 
                 return 1;                
             }
-            catch (FtpException ex)
+            catch (Exception ex)
             {
+                if (ex is FtpException)
+                {
+                    MessageBox.Show( ex.Message);
+                }
+                
                 MessageBox.Show("Problème de connexion! synchronisation non effectue!");
+                traitement_authentification.sync = 2;
                 return -1;
             }
-        
         }
 
 

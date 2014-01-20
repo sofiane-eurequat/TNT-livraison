@@ -54,6 +54,10 @@
       <HintPath>..\..\telechargement\ErikEJ.SqlCe40.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="OpenNETCF.Net, Version=2.3.12004.0, Culture=neutral, PublicKeyToken=e60dbea84bb431b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Nouveau dossier (6)\OpenNETCF.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Salient.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\telechargement\Salient.Data.dll</HintPath>

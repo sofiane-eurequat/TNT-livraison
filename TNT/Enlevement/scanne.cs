@@ -241,10 +241,12 @@ namespace TNT
         }
 
 
+        // enlever la synchronisation  
         public void pBUpdate_Click_1(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             int resu=enreg_enlevmenet();
+            /*
             if (resu == 1)
             {
                 traitement_enlevement tr_enlev = new traitement_enlevement();
@@ -252,6 +254,7 @@ namespace TNT
                 tr_enlev.upload();
                 initAll();
             }
+            */
             this.scan_manuel.Focus();
             Cursor.Current = Cursors.Default;
         }

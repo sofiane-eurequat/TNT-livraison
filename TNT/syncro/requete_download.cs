@@ -35,8 +35,6 @@ namespace TNT.syncro
             return rep;
         }
 
-
-
         public int int_auto (string table,string id)
         {
             try

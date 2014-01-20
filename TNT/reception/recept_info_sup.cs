@@ -54,11 +54,16 @@ namespace TNT.reception
          
             traitement_reception tr_recept = new traitement_reception();
             int result = tr_recept.insrt_respt(lab_code.Text.ToString(),chemin_serv,txb_com.Text.ToString());
+            
+            /*
             if (result == 1)
             {
                 tr_recept.export_fichier();
                 tr_recept.upload();
-            }
+            } 
+            */
+ 
+
             Cursor.Current = Cursors.Default; 
          
         }

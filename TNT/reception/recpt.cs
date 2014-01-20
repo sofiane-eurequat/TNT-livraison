@@ -153,11 +153,15 @@ namespace TNT.reception
 
                 traitement_reception tr_recept = new traitement_reception();
                 int result = tr_recept.insrt_respt(scan, "", "");
+                
+                /*
                 if (result == 1)
                 {
                     tr_recept.export_fichier();
                     tr_recept.upload();
                 }
+                */
+
                 Cursor.Current = Cursors.Default;
             }
             else {

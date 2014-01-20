@@ -135,10 +135,7 @@ namespace TNT.reception
                 // Authenticate.
                 client.Authenticate(user, pw);
                 // Do something here...
-
-
-
-
+                
 
                 if (!client.DirectoryExists(repertoire))
                 {
