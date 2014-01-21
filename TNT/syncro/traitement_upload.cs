@@ -190,7 +190,7 @@ namespace TNT.syncro
                 {
                     MessageBox.Show( ex.Message);
                 }
-                
+                //TODO : prbleme => si le traitement_authentification.sync=2 il ne sera jamais remis a 1
                 MessageBox.Show("Problème de connexion! synchronisation non effectue!");
                 traitement_authentification.sync = 2;
                 return -1;

@@ -4,7 +4,10 @@ using System.Net;
 using ComponentPro.IO;
 using ComponentPro.Net;
 using TNT.login;
+using OpenNETCF.Net.NetworkInformation;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 
@@ -78,18 +81,8 @@ namespace TNT.syncro
 
         private void bt_synch_pda_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor; 
             
-
-
-
-            var resultatConnexion = testConnection();
-            if (!resultatConnexion)
-            {
-                Cursor.Current = Cursors.Default;
-                return;
-            }
-            Cursor.Current = Cursors.WaitCursor;
-
             traitement_download dn = new traitement_download();
             int rep = dn.download();
             if (rep == 1)
@@ -114,17 +107,17 @@ namespace TNT.syncro
 
         private void bt_synch_pc_Click(object sender, EventArgs e)
         {
-            
+            Cursor.Current = Cursors.WaitCursor;
 
 
             var resultatConnexion=testConnection();
-            if (!resultatConnexion)
+            if (resultatConnexion)
             {
                 Cursor.Current = Cursors.Default;
-                return;
+
             }
 
-            Cursor.Current = Cursors.WaitCursor;
+
 
             traitement_upload up = new traitement_upload();
             up.exporte_fichier();
@@ -255,10 +248,9 @@ namespace TNT.syncro
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-               using(myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse())
-               {
-                   if (myHttpWebResponse.StatusCode == HttpStatusCode.OK)
-                    {
+                myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
+                if (myHttpWebResponse.StatusCode == HttpStatusCode.OK)
+                {
                     connected = true; 
                     MessageBox.Show("Connexion internet ok");
                     Ftp client = new Ftp();
@@ -273,19 +265,9 @@ namespace TNT.syncro
                         // Do something here. You can browse directories, list files, transfer files
                         // ...
                         // Disconnect.
+                        client.Disconnect();
                         Cursor.Current = Cursors.Default;
                         MessageBox.Show("Serveur Disponible");
-
-
-                        /*
-                        foreach (FtpFileInfo info in client.ListDirectory("/www/tnt web/bdd/upload/bdd1/"))
-                        {
-                            MessageBox.Show("Name: "+info.FullName+", UserId: "+info.FilePermissionsEnum+", Permissions: "+ info.FilePermissions);
-                        }
-                        */
-
-
-                        client.Disconnect();
                         return true;
                     }
                     catch (FtpException exc)
@@ -306,7 +288,6 @@ namespace TNT.syncro
                     MessageBox.Show("Probleme internet");
                     return false;
                 }
-               }
             }
             catch (WebException ex)
             {
