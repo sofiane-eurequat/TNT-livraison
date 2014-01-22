@@ -175,13 +175,13 @@ namespace TNT.syncro
                 client.Disconnect();
 
                 int sync = traitement_authentification.sync;
-                if (sync == 2)
+                /*if (sync == 2)
                 {
                     traitement_authentification.sync = 2;
-                }
-                else { traitement_authentification.sync = 1; }
+                }*/
+                /*else*/ { traitement_authentification.sync = 1; }
                 MessageBox.Show("Synchronisation PDA -> PC effetue avec succé !");
-
+                //TODO : prbleme => si le traitement_authentification.sync=2 il ne sera jamais remis a 1
                 return 1;                
             }
             catch (Exception ex)
@@ -190,7 +190,7 @@ namespace TNT.syncro
                 {
                     MessageBox.Show( ex.Message);
                 }
-                //TODO : prbleme => si le traitement_authentification.sync=2 il ne sera jamais remis a 1
+                
                 MessageBox.Show("Problème de connexion! synchronisation non effectue!");
                 traitement_authentification.sync = 2;
                 return -1;
