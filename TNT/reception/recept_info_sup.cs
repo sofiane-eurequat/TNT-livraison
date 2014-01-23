@@ -64,7 +64,9 @@ namespace TNT.reception
             */
  
 
-            Cursor.Current = Cursors.Default; 
+            Cursor.Current = Cursors.Default;
+            
+            this.Close();
          
         }
         public void enregistrer_img()

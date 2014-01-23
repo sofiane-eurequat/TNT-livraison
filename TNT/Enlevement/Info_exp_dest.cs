@@ -103,9 +103,9 @@ namespace TNT
                 scan = new scanne();
                 scan.dest = id_expediteur;
                 scan.exp = id_exp;
- 
-                scan.Show();
+
                 this.Close();
+                scan.Show();
             }
         }
 
@@ -116,6 +116,7 @@ namespace TNT
 
         private void pBHome_Click(object sender, EventArgs e)
         {
+            (new Menu()).Show();
             this.Close();
         }
 

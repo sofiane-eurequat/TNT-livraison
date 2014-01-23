@@ -237,7 +237,6 @@ namespace TNT
         private void pBHome_Click_1(object sender, EventArgs e)
         {
             scanAPI.StopRead();
-            (new Menu()).Show();
             this.Close();
         }
 
@@ -259,9 +258,7 @@ namespace TNT
             this.scan_manuel.Focus();
             Cursor.Current = Cursors.Default;
             // fermer l'application apres que le scan soit terminé 
-            scanAPI.StopRead();
             this.Close();
-            (new Menu()).Show();
         }
 
 
@@ -271,8 +268,8 @@ namespace TNT
             this.Close();
 
             // ici un instance de menu est re-crée pourquoi on a pas fermé la principale 
-            TNT.Menu mn = new Menu();
-            mn.Show();
+            //TNT.Menu mn = new Menu();
+            //mn.Show();
             
         }
 

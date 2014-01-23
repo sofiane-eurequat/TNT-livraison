@@ -6,7 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlServerCe; 
+using System.Data.SqlServerCe;
+using TNT.Helper;
 
 namespace TNT.login
 {
@@ -17,7 +18,7 @@ namespace TNT.login
          public DataSet ds ;
          public static string id_util ;
          public static string grade_util ;
-         public static int sync = 0 ;
+         public static EtatSynch sync = EtatSynch.initial;
          
         public   void   Traitement(string tr_log, string tr_wp)
         {

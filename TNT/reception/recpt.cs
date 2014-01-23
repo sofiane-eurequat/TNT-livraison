@@ -134,6 +134,7 @@ namespace TNT.reception
         {
             API_scanne.StopRead();
             this.Close();
+            (new Menu()).Show();
         }
 
         private void pBUpdate_Click(object sender, EventArgs e)
@@ -163,6 +164,11 @@ namespace TNT.reception
                 */
 
                 Cursor.Current = Cursors.Default;
+
+                //fermeture de la fenetre this.close
+                API_scanne.StopRead();
+                this.Close();
+                (new Menu()).Show();
             }
             else {
                 MessageBox.Show("Aucun scan est effectue  !!");

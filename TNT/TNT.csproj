@@ -170,6 +170,8 @@
     <Compile Include="Enlevement\structure_personne.cs" />
     <Compile Include="Enlevement\traitement_enlevement.cs" />
     <Compile Include="Enlevement\type_client.cs" />
+    <Compile Include="Helper\EtatSynch.cs" />
+    <Compile Include="Helper\TestConnexion.cs" />
     <Compile Include="login\authentification.cs">
       <SubType>Form</SubType>
     </Compile>

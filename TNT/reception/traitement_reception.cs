@@ -100,6 +100,7 @@ namespace TNT.reception
 
                 }
             }
+            MessageBox.Show("Ce colis n'a pas était enlevé");
             return -1;
         }
 

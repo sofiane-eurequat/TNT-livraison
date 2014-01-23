@@ -6,6 +6,7 @@ using ComponentPro.Net;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
+using TNT.Helper;
 using TNT.login;
 
 namespace TNT.syncro
@@ -138,12 +139,12 @@ namespace TNT.syncro
                 {
                     client.CreateDirectory(repertoire);
                 }
-                
+                /*
                 if (!client.DirectoryExists(repertoire+"signature/enlevement"))
                 {
                     client.CreateDirectory(repertoire + "signature/enlevement");
                 }
-
+                
                 if (!client.DirectoryExists(repertoire+"signature/reception"))
                 {
                     client.CreateDirectory(repertoire + "signature/reception");
@@ -162,26 +163,28 @@ namespace TNT.syncro
 
                 client.UploadFiles("My Documents\\signature\\enlevement", repertoire + "signature/enlevement");
                 client.UploadFiles("My Documents\\signature\\reception", repertoire + "signature/reception");
-
-
+                */
+                client.UploadFile(u_reception, u_serv_reception);
                 client.UploadFile(u_enlevement, u_serv_enlevement);
-                client.UploadFile(u_personne, u_serv_personne);
+                /*client.UploadFile(u_personne, u_serv_personne);
+
                 client.UploadFile(u_pers_type, u_serv_pers_type);
-                client.UploadFile(u_reception,u_serv_reception);
-                client.UploadFile(u_utilisateur,u_serv_utilisateur);
+                
+                client.UploadFile(u_utilisateur,u_serv_utilisateur);*/
                 
                 
 
                 client.Disconnect();
 
-                int sync = traitement_authentification.sync;
+                var sync = traitement_authentification.sync;
                 /*if (sync == 2)
                 {
                     traitement_authentification.sync = 2;
                 }*/
-                /*else*/ { traitement_authentification.sync = 1; }
+                /*else*/ { traitement_authentification.sync = EtatSynch.PdaVersPc; }
                 MessageBox.Show("Synchronisation PDA -> PC effetue avec succé !");
                 //TODO : prbleme => si le traitement_authentification.sync=2 il ne sera jamais remis a 1
+                //TODO: solution preconisé est d'ajouter un etat 3 qui representerai le fait que la sync pda=> pc peut se faire et que pc => pda est bloqué
                 return 1;                
             }
             catch (Exception ex)
@@ -192,7 +195,7 @@ namespace TNT.syncro
                 }
                 
                 MessageBox.Show("Problème de connexion! synchronisation non effectue!");
-                traitement_authentification.sync = 2;
+                traitement_authentification.sync = EtatSynch.PcVersPda;
                 return -1;
             }
         }

@@ -33,15 +33,8 @@ namespace TNT.syncro
 
             }
 
+            
 
-           var debutjournee= ConfigurationManager.GetChemin<string>("DebutJournee");
-           //ConfigurationManager.SetEtat("0");
-           var etat=ConfigurationManager.GetEtat();
-           if (etat == "0")
-           {
-               bt_synch_pda.Enabled = false;
-               lab_syncro_pc_pda.Enabled = false;
-           }
 
         }
 
@@ -75,9 +68,8 @@ namespace TNT.syncro
 
         private void pBHome_Click_1(object sender, EventArgs e)
         {
-            var syncro = traitement_authentification.sync;
-            var etat = ConfigurationManager.GetEtat();
-            if (syncro == EtatSynch.initial || syncro == EtatSynch.PcVersPda || etat=="0")
+            int syncro = traitement_authentification.sync;
+            if (syncro == 0 || syncro == 2 || syncro == 4)
             {
                 this.Close();
                 (new Menu()).Show();
@@ -90,11 +82,11 @@ namespace TNT.syncro
 
         private void bt_synch_pda_Click(object sender, EventArgs e)
         {
+            
 
 
 
-
-            var resultatConnexion = TestConnexion.Test(false);
+            var resultatConnexion = testConnection();
             if (!resultatConnexion)
             {
                 Cursor.Current = Cursors.Default;
@@ -114,21 +106,22 @@ namespace TNT.syncro
                 dn.insert_enlev();
                 dn.sup_fiche();
 
-                traitement_authentification.sync = EtatSynch.PcVersPda;
+                traitement_authentification.sync = 3;
            
                 bt_synch_pda.Enabled = false;
                 lab_syncro_pc_pda.Enabled = false;
-                ConfigurationManager.SetEtat("0");
+
+            
             }
             Cursor.Current = Cursors.Default;
         }
 
         private void bt_synch_pc_Click(object sender, EventArgs e)
         {
+            
 
 
-
-            var resultatConnexion = TestConnexion.Test(false);
+            var resultatConnexion=testConnection();
             if (!resultatConnexion)
             {
                 Cursor.Current = Cursors.Default;
@@ -140,21 +133,14 @@ namespace TNT.syncro
             traitement_upload up = new traitement_upload();
             up.exporte_fichier();
             up.upload();
-            /* if (traitement_authentification.sync == -1)
-             {
-                 traitement_authentification.sync = 1;
-             }
-             traitement_authentification.sync il n'est jamais egale a -1
-             */
-
-
-            var syncro = traitement_authentification.sync;
-
-
-            var etat = ConfigurationManager.GetEtat();
-           
-
-            if (syncro == EtatSynch.PdaVersPc && etat != "0")
+            if (traitement_authentification.sync == -1)
+            {
+                traitement_authentification.sync = 1;
+            }
+            
+            
+            int syncro = traitement_authentification.sync;
+            if (syncro == 1)
             {
                 bt_synch_pda.Enabled = true;
                 lab_syncro_pc_pda.Enabled = true;
@@ -257,9 +243,82 @@ namespace TNT.syncro
            // string msg = PingHost("eurequat-algerie.com");
            // MessageBox.Show(msg.ToString());
 
-            TestConnexion.Test(true);
+            testConnection();
         }
 
-       
+        public Boolean testConnection()
+        {
+            var url = "http://www.google.com";
+            Uri myUri = new Uri(url);
+            // Create a 'HttpWebRequest' object for the specified url. 
+            var myHttpWebRequest = (HttpWebRequest)WebRequest.Create(myUri);
+            myHttpWebRequest.AllowAutoRedirect = true;
+            // Send the request and wait for response.
+            var connected = false;
+            HttpWebResponse myHttpWebResponse = null;
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+               using(myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse())
+               {
+                   if (myHttpWebResponse.StatusCode == HttpStatusCode.OK)
+                    {
+                    connected = true; 
+                    MessageBox.Show("Connexion internet ok");
+                    Ftp client = new Ftp();
+                    try
+                    {
+
+                        // Connect to the FTP server.
+                        client.Connect("ftp.eurequat-algerie.com");
+
+                        // Authenticate.
+                        client.Authenticate("eurequat", "Serveur#2006");
+                        // Do something here. You can browse directories, list files, transfer files
+                        // ...
+                        // Disconnect.
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show("Serveur Disponible");
+
+
+                        /*
+                        foreach (FtpFileInfo info in client.ListDirectory("/www/tnt web/bdd/upload/bdd1/"))
+                        {
+                            MessageBox.Show("Name: "+info.FullName+", UserId: "+info.FilePermissionsEnum+", Permissions: "+ info.FilePermissions);
+                        }
+                        */
+
+
+                        client.Disconnect();
+                        return true;
+                    }
+                    catch (FtpException exc)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        if (client.State == RemoteFileSystemState.Connected ||
+                            client.State == RemoteFileSystemState.Idle)
+                        {
+                            client.Disconnect();
+                        }
+                        MessageBox.Show("Probleme Serveur");
+                        return false; 
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Probleme internet");
+                    return false;
+                }
+               }
+            }
+            catch (WebException ex)
+            {
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show("Probleme internet");
+                return false; 
+
+            }
+        }
     }
 }

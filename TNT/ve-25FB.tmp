@@ -1,11 +1,8 @@
-﻿using System.Collections.Specialized;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
 using System;
 using System.IO;
-using System.Windows.Forms;
 using System.Xml; 
 
 
@@ -24,23 +21,7 @@ namespace TNT
                 FileAccess.Read, FileShare.Read); 
 
             return new XmlTextReader(file); 
-        }
-
-
-
-        private static XmlDocument SetWriteConfigFile()
-        {
-            // Récupération du chemin de l'éxécutable: 
-            string appPath = System.IO.Path.GetFullPath(System.Reflection.
-                Assembly.GetExecutingAssembly().GetName().CodeBase) + ".config";
-            // Ouverture du fichier de config en lecture: 
-            FileStream file = new FileStream(appPath, FileMode.Open,
-                FileAccess.Read, FileShare.ReadWrite);
-            XmlDocument document=new XmlDocument();
-            document.Load(file);
-            return document;
         } 
-
 
         public static T GetChemin<T>(string key) 
         { 
@@ -81,34 +62,5 @@ namespace TNT
       
         }
 
-
-
-
-        public static void SetEtat(string key)
-        {
-            var doc = SetWriteConfigFile();
-            var  aNode = doc.SelectSingleNode("/configuration/appSettings");
-            var child = aNode.FirstChild;
-            var attribute = child.Attributes["value"];
-
-            child.Attributes["value"].Value = key;
-
-            var chemin = System.IO.Path.GetFullPath(System.Reflection.
-                                                           Assembly.GetExecutingAssembly().GetName().CodeBase) +
-                         ".config";
-             doc.Save(chemin);
-        }
-
-
-        public static String GetEtat()
-        {
-            var doc = SetWriteConfigFile();
-            var aNode = doc.SelectSingleNode("/configuration/appSettings");
-            var child = aNode.FirstChild;
-            var attribute = child.Attributes["value"];
-
-
-            return child.Attributes["value"].Value;
-        }
     }
 }
