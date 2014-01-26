@@ -34,8 +34,9 @@ namespace TNT.syncro
             }
 
 
-           var debutjournee= ConfigurationManager.GetChemin<string>("DebutJournee");
+           //var debutjournee= ConfigurationManager.GetChemin<string>("DebutJournee");
            //ConfigurationManager.SetEtat("0");
+            //l'etat 0 veut dire qu'il n'est pas en debut de journée
            var etat=ConfigurationManager.GetEtat();
            if (etat == "0")
            {

@@ -117,14 +117,15 @@ namespace TNT
         {
 
             var syncro = traitement_authentification.sync;
-            if (syncro == EtatSynch.PcVersPda)
+            var etat = ConfigurationManager.GetEtat();
+            if (syncro == EtatSynch.PcVersPda || etat=="0")
             {
                 lab_recep.Enabled = true;
                 pB_recep.Enabled = true;
 
                 lab_enlev.Enabled = true;
                 pB_enlev.Enabled = true;
-            } if (syncro == 0)
+            } if (syncro == EtatSynch.initial && etat != "0")
             {
                 MessageBox.Show("Veuliez etablir la synchronisation d'abord !!");
             }
@@ -152,7 +153,7 @@ namespace TNT
                 //up.backup_enlev();
                 up.backup_enlev();
                 up.backup_recept();
-                ConfigurationManager.SetEtat("0");
+                ConfigurationManager.SetEtat("1");
             }
 
             
