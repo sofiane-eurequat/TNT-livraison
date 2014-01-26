@@ -37,10 +37,13 @@ namespace TNT.Helper
                         {
 
                             // Connect to the FTP server.
-                            client.Connect("ftp.eurequat-algerie.com");
+                            var adresseServeur=ConfigurationManager.GetChemin<String>("server");
+                            var user = ConfigurationManager.GetChemin<String>("user");
+                            var pass = ConfigurationManager.GetChemin<String>("pw");
+                            client.Connect(adresseServeur);
 
                             // Authenticate.
-                            client.Authenticate("eurequat", "Serveur#2006");
+                            client.Authenticate(user, pass);
                             // Do something here. You can browse directories, list files, transfer files
                             // ...
                             // Disconnect.
