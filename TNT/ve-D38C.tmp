@@ -76,7 +76,15 @@ namespace TNT
                     // Do something
                     traitement_authentification.sync = EtatSynch.initial;
                     this.Close();
-                
+                DialogResult dialogResult = MessageBox.Show("Sure", "Some Title", MessageBoxButtons.YesNo);
+if(dialogResult == DialogResult.Yes)
+{
+    //do something
+}
+else if (dialogResult == DialogResult.No)
+{
+    //do something else
+}
             }
          
 
@@ -134,11 +142,18 @@ namespace TNT
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Cloturer l'application ?", "Cloture", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            DialogResult dialogResult = MessageBox.Show("Cloture", "Etes vous sur de vouloir cloturer", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 //do something
-            
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+
+
+
 
             var resultatConnexion = TestConnexion.Test(false);
             if (!resultatConnexion)
@@ -185,11 +200,6 @@ namespace TNT
             lab_sync.Enabled = false;
 
             Cursor.Current = Cursors.Default;
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
         }
 
     }
