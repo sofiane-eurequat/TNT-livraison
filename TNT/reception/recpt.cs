@@ -10,7 +10,8 @@ using Symbol;
 using TNT.Enlevement;
 using System.IO;
 using ComponentPro.Net;
-
+using TNT.Helper;
+using TNT.login;
 
 
 namespace TNT.reception
@@ -101,7 +102,7 @@ namespace TNT.reception
                     {
                         // If the failure is E_SCN_READINCOMPATIBLE, exit the application.
                         MessageBox.Show("AppExitMsg", "Failure");
-
+                        WriteLogFile.write(" recept AppExitMsg Failure" + " ; 0 ; " + traitement_authentification.sync);
                         this.Close();
                         return;
                     }
@@ -167,11 +168,14 @@ namespace TNT.reception
 
                 //fermeture de la fenetre this.close
                 API_scanne.StopRead();
+                WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync);
                 this.Close();
                 (new Menu()).Show();
             }
             else {
                 MessageBox.Show("Aucun scan est effectue  !!");
+                WriteLogFile.write("Aucun scan est effectue" + " ; 0 ; " + traitement_authentification.sync);
+                WriteLogFile.write("Reception" + " ; 0 ; " + traitement_authentification.sync);
             }
         }
 

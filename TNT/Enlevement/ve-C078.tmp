@@ -124,7 +124,7 @@ namespace TNT
                     }
                     string chemin = "\\My Documents\\signature\\enlevement\\ES" +  cpt_sign.ToString() + "-"+scan.ToString() + ".png";
                     string chemin_serv = repertoire_signature+"enlevement/ES" + cpt_sign.ToString() + "-" + scan.ToString() + ".png";
-                    //requete_signature.image.Save(chemin, System.Drawing.Imaging.ImageFormat.Png);
+                    requete_signature.image.Save(chemin, System.Drawing.Imaging.ImageFormat.Png);
 
                     DateTime dt = DateTime.Now;
                     string Format = "yyyy-MM-dd H:mm:ss";

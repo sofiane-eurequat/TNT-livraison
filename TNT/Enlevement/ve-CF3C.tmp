@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using Symbol;
 using TNT.Helper;
-using TNT.login;
 
 namespace TNT.Enlevement
 {
@@ -87,7 +86,7 @@ namespace TNT.Enlevement
 
                             );
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                        WriteLogFile.write("AP " + ex.Message);
                         return false;
                     }
                     catch (Symbol.Exceptions.InvalidRequestException ex)
@@ -96,7 +95,7 @@ namespace TNT.Enlevement
                             "InvalidRequest" + "\n" +
                             ex.Message);
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                        WriteLogFile.write("AP " + ex.Message);
                         return false;
                     }
                     catch (Symbol.Exceptions.InvalidIndexerException ex)
@@ -105,7 +104,7 @@ namespace TNT.Enlevement
                             "InvalidIndexer" + "\n" +
                             ex.Message);
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                        WriteLogFile.write("AP " + ex.Message);
                         return false;
                     };
 
@@ -148,7 +147,7 @@ namespace TNT.Enlevement
                             "Result" + " = " + (Symbol.Results)((uint)ex.Result)
                             );
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                        WriteLogFile.write("AP " + ex.Message);
                     }
                     catch (Symbol.Exceptions.InvalidRequestException ex)
                     {
@@ -156,7 +155,7 @@ namespace TNT.Enlevement
                             "InvalidRequest" + "\n" +
                             ex.Message);
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                        WriteLogFile.write("AP " + ex.Message);
                     }
                     catch (Symbol.Exceptions.InvalidIndexerException ex)
                     {
@@ -164,7 +163,7 @@ namespace TNT.Enlevement
                             "InvalidIndexer" + "\n" +
                             ex.Message);
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                        WriteLogFile.write("AP " + ex.Message);
                     };
                 }
 
@@ -188,7 +187,7 @@ namespace TNT.Enlevement
                             "Result" + " = " + (Symbol.Results)((uint)ex.Result)
                             );
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                        WriteLogFile.write("AP " + ex.Message);
                     }
                     catch (Symbol.Exceptions.InvalidRequestException ex)
                     {
@@ -196,7 +195,7 @@ namespace TNT.Enlevement
                             "InvalidRequest" + "\n" +
                             ex.Message);
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                        WriteLogFile.write("AP " + ex.Message);
                     }
 
                     catch (Symbol.Exceptions.InvalidIndexerException ex)
@@ -205,7 +204,7 @@ namespace TNT.Enlevement
                            "InvalidIndexer" + "\n" +
                             ex.Message);
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                        WriteLogFile.write("AP " + ex.Message);
                     };
                 }
             }
@@ -239,8 +238,6 @@ namespace TNT.Enlevement
                             "OperationFailure" + "\n" + ex.Message +
                             "\n" +
                             "Result" + " = " + (Symbol.Results)((uint)ex.Result));
-
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
                     }
                     catch (Symbol.Exceptions.InvalidRequestException ex)
                     {
@@ -248,16 +245,12 @@ namespace TNT.Enlevement
                             "InvalidRequest" + "\n" +
                             ex.Message);
 
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
-
                     }
                     catch (Symbol.Exceptions.InvalidIndexerException ex)
                     {
                         MessageBox.Show("StartRead" + "\n" +
                             "InvalidIndexer" + "\n" +
                             ex.Message);
-
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
 
                     };
             }
@@ -287,24 +280,18 @@ namespace TNT.Enlevement
                             "\n" +
                             "Result" + " = " + (Symbol.Results)((uint)ex.Result)
                             );
-
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
                     }
                     catch (Symbol.Exceptions.InvalidRequestException ex)
                     {
                         MessageBox.Show("StopRead" + "\n" +
                             "InvalidRequest" + "\n" +
                             ex.Message);
-
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
                     }
                     catch (Symbol.Exceptions.InvalidIndexerException ex)
                     {
                         MessageBox.Show("StopRead" + "\n" +
                             "InvalidIndexer" + "\n" +
                             ex.Message);
-
-                        WriteLogFile.write("AP " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
                     };
                 }
             }

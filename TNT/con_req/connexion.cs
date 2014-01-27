@@ -8,6 +8,8 @@ using System.Globalization;
 using System.Resources;
 using System.Reflection;
 using System.Windows.Forms;
+using TNT.Helper;
+using TNT.login;
 
 namespace TNT.con_req
 {
@@ -40,8 +42,9 @@ namespace TNT.con_req
             {
                 conne.Open();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                WriteLogFile.write("Connexion " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
                 MessageBox.Show("erreur BDD");
                 Application.Exit();
             }

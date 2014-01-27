@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using TNT.Helper;
 using TNT.login;
 using TNT.con_req;
 using ComponentPro.Net;
@@ -104,6 +105,7 @@ namespace TNT.Enlevement
                     if (TheReaderData.Result == Symbol.Results.E_SCN_READINCOMPATIBLE)
                     {
                         // If the failure is E_SCN_READINCOMPATIBLE, exit the application.
+                        WriteLogFile.write("scanner_fils " + "AppExitMsg probleme scanner" + " ; 0 ; " + traitement_authentification.sync);
                         MessageBox.Show("AppExitMsg", "Failure");
 
                         this.Close();
@@ -141,7 +143,7 @@ namespace TNT.Enlevement
             }
             catch (FtpException e)
             {
-
+                WriteLogFile.write("scanner_fils " + e.Message + " ; 0 ; " + traitement_authentification.sync);
                 MessageBox.Show("Problème de connexion! synchronisation non effectue!");
             }
         }

@@ -172,6 +172,7 @@
     <Compile Include="Enlevement\type_client.cs" />
     <Compile Include="Helper\EtatSynch.cs" />
     <Compile Include="Helper\TestConnexion.cs" />
+    <Compile Include="Helper\WriteLogFile.cs" />
     <Compile Include="login\authentification.cs">
       <SubType>Form</SubType>
     </Compile>

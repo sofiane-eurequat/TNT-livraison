@@ -3,10 +3,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
 using System.Data;
-
-
-
-
+using TNT.Helper;
+using TNT.login;
 
 
 namespace TNT.con_req
@@ -34,8 +32,9 @@ namespace TNT.con_req
                 return nbLignes;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                WriteLogFile.write("Requete " + ex.Message + " ; 0 ; " + traitement_authentification.sync + " ; 0 ; " + traitement_authentification.sync);
                 return -1;
             }
         } //ExecuteUppdate
@@ -66,6 +65,7 @@ namespace TNT.con_req
             catch (SqlCeException ex)
             {
                 //log ex
+                WriteLogFile.write("Requete "+ ex.Message + " ; 0 ; " + traitement_authentification.sync);
                 return -1;
             }
             finally
@@ -96,8 +96,9 @@ namespace TNT.con_req
                     return ds;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                WriteLogFile.write("Requete " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
                 return null;
             }
         }

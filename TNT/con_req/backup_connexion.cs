@@ -8,6 +8,8 @@ using System.Globalization;
 using System.Resources;
 using System.Reflection;
 using System.Windows.Forms;
+using TNT.Helper;
+using TNT.login;
 
 namespace TNT.con_req
 {
@@ -43,6 +45,7 @@ namespace TNT.con_req
             catch (Exception)
             {
                 MessageBox.Show("erreur BDD Backup");
+                WriteLogFile.write("erreur BDD Backup"+" ; 0 ; " + traitement_authentification.sync);
                 con.Close();
                 Application.Exit();
             }

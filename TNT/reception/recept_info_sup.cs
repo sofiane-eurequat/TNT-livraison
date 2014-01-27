@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using TNT.Enlevement;
+using TNT.Helper;
 using TNT.login;
 
 namespace TNT.reception
@@ -50,8 +51,8 @@ namespace TNT.reception
             }
             string chemin = "\\My Documents\\signature\\reception\\RS" + cpt_sign.ToString() +"-"+lab_code.Text.ToString()+ ".png";
             string chemin_serv = repertoire_signature + "reception/RS" + cpt_sign.ToString() + "-" + lab_code.Text.ToString() + ".png";
-            requete_signature.image.Save(chemin, System.Drawing.Imaging.ImageFormat.Png);
-         
+            //requete_signature.image.Save(chemin, System.Drawing.Imaging.ImageFormat.Png);
+            
             traitement_reception tr_recept = new traitement_reception();
             int result = tr_recept.insrt_respt(lab_code.Text.ToString(),chemin_serv,txb_com.Text.ToString());
             
@@ -65,7 +66,7 @@ namespace TNT.reception
  
 
             Cursor.Current = Cursors.Default;
-            
+            WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync);
             this.Close();
          
         }

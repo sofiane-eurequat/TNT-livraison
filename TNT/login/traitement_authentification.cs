@@ -20,7 +20,7 @@ namespace TNT.login
          public static string grade_util ;
          public static EtatSynch sync = EtatSynch.initial;
          
-        public   void   Traitement(string tr_log, string tr_wp)
+        public   void    Traitement(string tr_log, string tr_wp)
         {
           
           

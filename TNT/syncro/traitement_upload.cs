@@ -175,7 +175,7 @@ namespace TNT.syncro
                 
 
                 client.Disconnect();
-
+                WriteLogFile.write("Sync PDA=>PC ; 1 ; " + traitement_authentification.sync);
                 var sync = traitement_authentification.sync;
                 /*if (sync == 2)
                 {
@@ -196,6 +196,7 @@ namespace TNT.syncro
                 
                 MessageBox.Show("Problème de connexion! synchronisation non effectue!");
                 traitement_authentification.sync = EtatSynch.PcVersPda;
+                WriteLogFile.write("Sync PDA=>PC ; 0 ; " + traitement_authentification.sync);
                 return -1;
             }
         }

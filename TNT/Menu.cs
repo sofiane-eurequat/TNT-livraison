@@ -152,17 +152,33 @@ namespace TNT
             traitement_upload up = new traitement_upload();
             up.exporte_fichier();
             int repense =up.upload();
-            if (repense == 1) 
+            if (repense == 1)
             {
                 //up.backup_enlev();
                 up.backup_enlev();
                 up.backup_recept();
                 ConfigurationManager.SetEtat("1");
-            }
 
+                traitement_authentification.sync = EtatSynch.cloture;
+
+                lab_recep.Enabled = false;
+                pB_recep.Enabled = false;
+
+                lab_enlev.Enabled = false;
+                pB_enlev.Enabled = false;
+
+                pBSyncPCversPDA.Enabled = false;
+                lab_sync.Enabled = false;
+                WriteLogFile.write("Cloture ; 1" + " ; " + traitement_authentification.sync);
+                Cursor.Current = Cursors.Default;
+            }
+            else
+            {
+                WriteLogFile.write("cloture ; 0 " + " ; " + traitement_authentification.sync);
+            }
             
-            int rep1= up.copy_signature("My Documents\\signature\\enlevement", "My Documents\\signature\\copy\\enlevement");
-            int rep2= up.copy_signature("My Documents\\signature\\reception", "My Documents\\signature\\copy\\reception");
+            //int rep1= up.copy_signature("My Documents\\signature\\enlevement", "My Documents\\signature\\copy\\enlevement");
+            //int rep2= up.copy_signature("My Documents\\signature\\reception", "My Documents\\signature\\copy\\reception");
             
             /*
             if (traitement_authentification.sync == -1)
@@ -173,18 +189,7 @@ namespace TNT
              */
 
 
-             traitement_authentification.sync = EtatSynch.cloture; 
-
-            lab_recep.Enabled = false;
-            pB_recep.Enabled = false;
-
-            lab_enlev.Enabled = false;
-            pB_enlev.Enabled = false;
-
-            pBSyncPCversPDA.Enabled = false;
-            lab_sync.Enabled = false;
-
-            Cursor.Current = Cursors.Default;
+             
             }
             else if (dialogResult == DialogResult.No)
             {

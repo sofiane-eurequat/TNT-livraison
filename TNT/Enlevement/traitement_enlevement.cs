@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlServerCe;
 using System.IO;
 using ComponentPro.Net;
+using TNT.Helper;
 
 namespace TNT.login
 {
@@ -249,6 +250,7 @@ namespace TNT.login
             }
             catch (FtpException e)
             {
+                WriteLogFile.write("Traitement_enlevement " + e.Message + " ; 0 ; " + traitement_authentification.sync);
                 MessageBox.Show("Problème de connexion! synchronisation non effectue!");
             }
         }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using ComponentPro.IO;
 using ComponentPro.Net;
+using TNT.login;
 
 namespace TNT.Helper
 {
@@ -71,11 +72,13 @@ namespace TNT.Helper
                                 client.Disconnect();
                             }
                             MessageBox.Show("Probleme Serveur");
+                            WriteLogFile.write("Probleme Serveur" + " ; 0 ; " + traitement_authentification.sync);
                             return false;
                         }
 
                     }
                     MessageBox.Show("Probleme internet");
+                    WriteLogFile.write("Probleme internet" + " ; 0 ; " + traitement_authentification.sync);
                     return false;
                 }
             }
@@ -83,6 +86,7 @@ namespace TNT.Helper
             {
                 Cursor.Current = Cursors.Default;
                 MessageBox.Show("Probleme internet");
+                WriteLogFile.write("Probleme internet" + " ; 0 ; " + traitement_authentification.sync);
                 return false;
 
             }

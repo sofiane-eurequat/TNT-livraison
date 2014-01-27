@@ -100,9 +100,7 @@ namespace TNT.syncro
             if (!resultatConnexion)
             {
                 Cursor.Current = Cursors.Default;
-                WriteLogFile.write("Sync PC=>PDA ; 0 ; " + traitement_authentification.sync);
                 return;
-
             }
             Cursor.Current = Cursors.WaitCursor;
 
@@ -123,11 +121,6 @@ namespace TNT.syncro
                 bt_synch_pda.Enabled = false;
                 lab_syncro_pc_pda.Enabled = false;
                 ConfigurationManager.SetEtat("0");
-                WriteLogFile.write("Sync PC=>PDA ; 1 ; " + traitement_authentification.sync);
-            }
-            else
-            {
-                WriteLogFile.write("Sync PC=>PDA ; 0 ; " + traitement_authentification.sync);
             }
             Cursor.Current = Cursors.Default;
         }
@@ -141,7 +134,7 @@ namespace TNT.syncro
             if (!resultatConnexion)
             {
                 Cursor.Current = Cursors.Default;
-                WriteLogFile.write("Sync PDA=>PC ; 0 ; " + " ; " + traitement_authentification.sync);
+                WriteLogFile.write("enlevement ; 1 ; ");
                 return;
             }
 
@@ -168,10 +161,10 @@ namespace TNT.syncro
             {
                 bt_synch_pda.Enabled = true;
                 lab_syncro_pc_pda.Enabled = true;
-              
             }
 
-            
+
+            WriteLogFile.write("enlevement ; 1 ; ");
 
         }
 
