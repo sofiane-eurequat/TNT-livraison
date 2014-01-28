@@ -34,7 +34,8 @@ namespace TNT.login
                 else
                 {
                     id_util = ds.Tables[0].Rows[0][0].ToString();
-                    grade_util = ds.Tables[0].Rows[0][2].ToString(); 
+                    grade_util = ds.Tables[0].Rows[0][2].ToString();
+                    WriteLogFile.write("***********************************; 1 ; " + traitement_authentification.sync);
                     (new Menu()).Show();
                    
                 }

@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -30,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(authentification));
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelLogin = new System.Windows.Forms.Label();
@@ -44,6 +42,7 @@
             this.pBLogin = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lab_bdd = new System.Windows.Forms.Label();
+            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.SuspendLayout();
             // 
             // textBoxLogin
@@ -201,5 +200,6 @@
         private System.Windows.Forms.PictureBox pBLogin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lab_bdd;
+        private System.Windows.Forms.MainMenu mainMenu1;
     }
 }

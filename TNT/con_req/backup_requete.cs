@@ -29,7 +29,7 @@ namespace TNT.con_req
             }
             catch (Exception ex)
             {
-                WriteLogFile.write("backup Requete " + ex.Message+" ; 0 ; " + traitement_authentification.sync);
+                //WriteLogFile.write("backup Requete " + ex.Message+" ; 0 ; " + traitement_authentification.sync);
                 return 0;
             }
             finally
@@ -62,7 +62,7 @@ namespace TNT.con_req
 
             catch (SqlCeException ex)
             {
-                WriteLogFile.write("Backup Requete " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                //WriteLogFile.write("Backup Requete " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
                 return -1;
             }
             finally
@@ -94,7 +94,7 @@ namespace TNT.con_req
             }
             catch (Exception ex)
             {
-                WriteLogFile.write("Backup Requete " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
+                //WriteLogFile.write("Backup Requete " + ex.Message + " ; 0 ; " + traitement_authentification.sync);
                 return null;
             }
         }

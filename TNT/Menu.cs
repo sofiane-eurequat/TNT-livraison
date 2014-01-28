@@ -155,8 +155,11 @@ namespace TNT
             if (repense == 1)
             {
                 //up.backup_enlev();
+                Cursor.Current = Cursors.WaitCursor;
                 up.backup_enlev();
+                Cursor.Current = Cursors.WaitCursor;
                 up.backup_recept();
+                Cursor.Current = Cursors.WaitCursor;
                 ConfigurationManager.SetEtat("1");
 
                 traitement_authentification.sync = EtatSynch.cloture;
@@ -175,6 +178,7 @@ namespace TNT
             else
             {
                 WriteLogFile.write("cloture ; 0 " + " ; " + traitement_authentification.sync);
+                Cursor.Current = Cursors.Default;
             }
             
             //int rep1= up.copy_signature("My Documents\\signature\\enlevement", "My Documents\\signature\\copy\\enlevement");

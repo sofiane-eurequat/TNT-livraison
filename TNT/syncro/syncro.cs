@@ -111,12 +111,17 @@ namespace TNT.syncro
             if (rep == 1)
             {
                 dn.delete_tab();
-
+                Cursor.Current = Cursors.WaitCursor;
                 dn.insert();
+                Cursor.Current = Cursors.WaitCursor;
                 dn.insert_pers();
+                Cursor.Current = Cursors.WaitCursor;
                 dn.insert_pers_type();
+                Cursor.Current = Cursors.WaitCursor;
                 dn.insert_enlev();
+                Cursor.Current = Cursors.WaitCursor;
                 dn.sup_fiche();
+                Cursor.Current = Cursors.WaitCursor;
 
                 traitement_authentification.sync = EtatSynch.PcVersPda;
            

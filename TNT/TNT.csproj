@@ -273,6 +273,7 @@
     <Content Include="backup_tnt.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="System.Data.SqlServerCe.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
