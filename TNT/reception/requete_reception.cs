@@ -111,7 +111,12 @@ namespace TNT.reception
 
                 string requete = "insert into reception (id_enlev,date_recept,id_util,id_util_enlev,obser_recept,signature_recept,code_colis) values (" + id_enlev + ",'" + dat.ToString() + "'," + id_util + ","+id_util_enlev+",'"+commentaire+"','"+signature+"','"+scanne+"')";
                 int rep = Requete.ExecuteUpdate(requete);
+
+
+                string requeteIdRecept = "Select id_recept from reception where id_enlev=" + id_enlev + ",date_recept=" + dat.ToString() + "id_util=" + id_util + "id_util_enlev=" + id_util_enlev;
                 return rep;
+                var ds=Requete.ExecuteSelect(requeteIdRecept);
+               
 
                 /*
 
@@ -134,6 +139,7 @@ namespace TNT.reception
             catch 
             {
                 MessageBox.Show("erreur requete");
+                //WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync + ";" );
                 return -1;
             }
         }

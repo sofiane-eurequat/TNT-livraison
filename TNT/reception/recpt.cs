@@ -168,14 +168,18 @@ namespace TNT.reception
 
                 //fermeture de la fenetre this.close
                 API_scanne.StopRead();
-                WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync);
+                if(scan!=null)WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync+";"+scan);
+                else WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync+";null");
+                
                 this.Close();
                 (new Menu()).Show();
             }
             else {
                 MessageBox.Show("Aucun scan est effectue  !!");
                 WriteLogFile.write("Aucun scan est effectue" + " ; 0 ; " + traitement_authentification.sync);
-                WriteLogFile.write("Reception" + " ; 0 ; " + traitement_authentification.sync);
+
+                if(scan!=null)WriteLogFile.write("Reception" + " ; 0 ; " + traitement_authentification.sync+scan);
+                else WriteLogFile.write("Reception" + " ; 0 ; " + traitement_authentification.sync + ";null");
             }
         }
 

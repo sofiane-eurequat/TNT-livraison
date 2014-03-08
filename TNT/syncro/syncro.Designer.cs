@@ -35,6 +35,7 @@
             this.bt_synch_pda = new System.Windows.Forms.PictureBox();
             this.bt_synch_pc = new System.Windows.Forms.PictureBox();
             this.Con = new System.Windows.Forms.PictureBox();
+            this.PbLog = new System.Windows.Forms.PictureBox();
             this.SuspendLayout();
             // 
             // pBHome
@@ -95,12 +96,23 @@
             this.Con.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Con.Click += new System.EventHandler(this.Con_Click);
             // 
+            // PbLog
+            // 
+            this.PbLog.BackColor = System.Drawing.Color.White;
+            this.PbLog.Image = ((System.Drawing.Image)(resources.GetObject("PbLog.Image")));
+            this.PbLog.Location = new System.Drawing.Point(91, 214);
+            this.PbLog.Name = "PbLog";
+            this.PbLog.Size = new System.Drawing.Size(30, 30);
+            this.PbLog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbLog.Click += new System.EventHandler(this.PbLog_Click);
+            // 
             // syncro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 294);
+            this.Controls.Add(this.PbLog);
             this.Controls.Add(this.Con);
             this.Controls.Add(this.bt_synch_pc);
             this.Controls.Add(this.bt_synch_pda);
@@ -121,5 +133,6 @@
         private System.Windows.Forms.PictureBox bt_synch_pda;
         private System.Windows.Forms.PictureBox bt_synch_pc;
         private System.Windows.Forms.PictureBox Con;
+        private System.Windows.Forms.PictureBox PbLog;
     }
 }

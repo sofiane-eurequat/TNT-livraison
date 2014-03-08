@@ -92,7 +92,7 @@ namespace TNT.syncro
 
         private void bt_synch_pda_Click(object sender, EventArgs e)
         {
-             
+
 
 
 

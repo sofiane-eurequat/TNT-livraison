@@ -25,9 +25,12 @@ namespace TNT.syncro
 
         string u_serv_personne = ConfigurationManager.GetChemin<string>("repertoire") + ConfigurationManager.GetChemin<string>("U_serv_personne");
         string u_serv_enlevement = ConfigurationManager.GetChemin<string>("repertoire") + ConfigurationManager.GetChemin<string>("U_serv_enlevement");
+        string u_serv_enlevement_def = ConfigurationManager.GetChemin<string>("repertoire") + ConfigurationManager.GetChemin<string>("U_serv_enlevement_def");
+        
         string u_serv_pers_type = ConfigurationManager.GetChemin<string>("repertoire")+ConfigurationManager.GetChemin<string>("U_serv_pers_type");
         string u_serv_utilisateur =ConfigurationManager.GetChemin<string>("repertoire")+ ConfigurationManager.GetChemin<string>("U_serv_utilisateur");
         string u_serv_reception =ConfigurationManager.GetChemin<string>("repertoire")+ ConfigurationManager.GetChemin<string>("U_serv_reception");
+        string u_serv_reception_def = ConfigurationManager.GetChemin<string>("repertoire") + ConfigurationManager.GetChemin<string>("U_serv_reception_def");
         
 
 
@@ -164,8 +167,39 @@ namespace TNT.syncro
                 client.UploadFiles("My Documents\\signature\\enlevement", repertoire + "signature/enlevement");
                 client.UploadFiles("My Documents\\signature\\reception", repertoire + "signature/reception");
                 */
+
+                int counter = 0;
+                string line;
+
                 client.UploadFile(u_reception, u_serv_reception);
+                client.Rename(u_serv_reception, u_serv_reception_def);
+                WriteLogFile.write("#######################################################  Reception ################################");
+                System.IO.StreamReader file = new System.IO.StreamReader(u_reception);
+                while (( line = file.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                    WriteLogFile.write(line);
+                    counter++;
+                }
+                WriteLogFile.write("nombre de lignes "+counter.ToString());
+                WriteLogFile.write("#######################################################  Reception ################################");
+                
+
                 client.UploadFile(u_enlevement, u_serv_enlevement);
+                client.Rename(u_serv_enlevement, u_serv_enlevement_def);
+                
+                counter = 0;
+                WriteLogFile.write("#######################################################  ENLEVEMENT ################################");
+                file = new System.IO.StreamReader(u_enlevement);
+                while ((line = file.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                    WriteLogFile.write(line);
+                    counter++;
+                }
+                WriteLogFile.write("nombre de lignes "+counter.ToString());
+                WriteLogFile.write("#######################################################  ENLEVEMENT ################################");       
+                
                 /*client.UploadFile(u_personne, u_serv_personne);
 
                 client.UploadFile(u_pers_type, u_serv_pers_type);

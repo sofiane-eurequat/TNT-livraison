@@ -98,12 +98,10 @@ C:\Users\Malik\Desktop\TNT\TNT\obj\Debug\TNT.csproj.GenerateResource.Cache
 C:\Users\Malik\Desktop\TNT\TNT\obj\Debug\TNT.pdb
 C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\bdd_tnt.sdf
 C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\backup_tnt.sdf
-C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\app.config
 C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\TNT.exe.config
 C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\TNT.exe
 C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\TNT.pdb
 C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\System.Data.SqlClient.dll
-C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\System.Data.SqlServerCe.dll
 C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\UltimateCommonCF.dll
 C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\UltimateFileSystemCF.dll
 C:\Users\Malik\Desktop\TNT\TNT\bin\Debug\UltimateFtpCF.dll

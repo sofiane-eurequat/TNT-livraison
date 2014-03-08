@@ -16,6 +16,7 @@ namespace TNT.reception
 
     class traitement_reception
     {
+        public static int id_enlev_static = -1;
         private int id_pers = 0;
         string u_personne = ConfigurationManager.GetChemin<string>("U_personne");
         string u_enlevement = ConfigurationManager.GetChemin<string>("U_enlevement");
@@ -70,6 +71,7 @@ namespace TNT.reception
             
 
             int id_enlev = req_recpt.retour_id( req);
+            id_enlev_static = id_enlev;
             int id_util = req_recpt.retour_id(req2);
             if (id_enlev != 0)
             {

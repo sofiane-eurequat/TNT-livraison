@@ -27,7 +27,6 @@ namespace TNT
         }
 
 
-
         private static XmlDocument SetWriteConfigFile()
         {
             // Récupération du chemin de l'éxécutable: 

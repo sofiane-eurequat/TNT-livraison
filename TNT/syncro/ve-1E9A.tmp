@@ -92,7 +92,7 @@ namespace TNT.syncro
 
         private void bt_synch_pda_Click(object sender, EventArgs e)
         {
-             
+
 
 
 
@@ -282,26 +282,14 @@ namespace TNT.syncro
             string user = ConfigurationManager.GetChemin<string>("user");
             string pw = ConfigurationManager.GetChemin<string>("pw");
             string repertoire = ConfigurationManager.GetChemin<string>("repertoire");
-            string log = ConfigurationManager.GetChemin<string>("Log");
             Ftp client = new Ftp();
-            try
+            client.Connect(server);
+            client.Authenticate(user, pw);
+            if (!client.DirectoryExists(repertoire))
             {
-                client.Connect(server);
-                client.Authenticate(user, pw);
-                if (!client.DirectoryExists(repertoire + "log/"))
-                    client.CreateDirectory(repertoire + "log/");
-                var cheminlog = repertoire + "log/log_" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm") + ".txt";
-                client.UploadFile(log, cheminlog);
-                client.Disconnect();
-                MessageBox.Show("Log envoyé Merci !!");
-                File.Delete(log);
+                client.CreateDirectory(repertoire);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("impossible d'nevoyer le fichier log");
-                WriteLogFile.write("probleme envoie fichier log"+ex.Message+" ; 0 ; " + traitement_authentification.sync);
-            }
-            
+
         }
 
        
