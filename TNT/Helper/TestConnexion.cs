@@ -34,7 +34,7 @@ namespace TNT.Helper
                         connected = true;
                         if (verbose) MessageBox.Show("Connexion internet ok");
                         Ftp client = new Ftp();
-                        try
+                        try 
                         {
 
                             // Connect to the FTP server.

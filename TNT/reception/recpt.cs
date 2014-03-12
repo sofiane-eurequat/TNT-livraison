@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using Symbol;
 using TNT.Enlevement;
-using System.IO;
-using ComponentPro.Net;
 using TNT.Helper;
 using TNT.login;
 
@@ -168,8 +161,7 @@ namespace TNT.reception
 
                 //fermeture de la fenetre this.close
                 API_scanne.StopRead();
-                if(scan!=null)WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync+";"+scan);
-                else WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync+";null");
+                
                 
                 this.Close();
                 (new Menu()).Show();

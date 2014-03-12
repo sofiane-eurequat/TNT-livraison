@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
 using System.IO;
+using TNT.Helper;
 using TNT.login;
 using ComponentPro.Net;
 
@@ -85,23 +86,32 @@ namespace TNT.reception
                     int repense = req_recpt.insert_recept(id_enlev,util,id_util,signature,commentaire,scanne);
                     if (repense != -1)
                     {
+                        if (scanne != null) WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync + ";" + scanne);
+                        else WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync + ";null");
+
                         MessageBox.Show("reception effecuter avec succée");
                         return 1;
                     }
                     else
                     {
-
                         MessageBox.Show("erreur requete");
+                        if (scanne != null) WriteLogFile.write("Reception erreur requete" + " ; 0 ; " + traitement_authentification.sync + ";" + scanne);
+                        else WriteLogFile.write("Reception erreur correcte" + " ; 0 ; " + traitement_authentification.sync + ";null");
                         return -1;
                     }
                 }
                 else 
                 {
+                    if (scanne != null) WriteLogFile.write("Reception Ce colis a déjà été scanner" + " ; 0 ; " + traitement_authentification.sync + ";" + scanne);
+                    else WriteLogFile.write("Reception Ce colis a déjà été scanner" + " ; 0 ; " + traitement_authentification.sync + ";null");   
                     MessageBox.Show("Ce colis a déjà été scanner !!!");
                     return -1;
 
                 }
             }
+            if (scanne != null) WriteLogFile.write("Reception Ce colis n'a pas était enlevé" + " ; 0 ; " + traitement_authentification.sync + ";" + scanne);
+            else WriteLogFile.write("Reception Ce colis n'a pas était enlevé" + " ; 0 ; " + traitement_authentification.sync + ";null");   
+                    
             MessageBox.Show("Ce colis n'a pas était enlevé");
             return -1;
         }

@@ -66,7 +66,6 @@ namespace TNT.reception
  
 
             Cursor.Current = Cursors.Default;
-            WriteLogFile.write("Reception" + " ; 1 ; " + traitement_authentification.sync);
             this.Close();
          
         }
